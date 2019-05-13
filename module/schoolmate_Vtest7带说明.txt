@@ -1,0 +1,1207 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=S11
+State:
+	name=S12
+State:
+	name=S13
+State:
+	name=S14
+State:
+	name=S15
+State:
+	name=S16
+State:
+	name=S17
+State:
+	name=S18
+State:
+	name=S19
+State:
+	name=S20
+State:
+	name=S21
+State:
+	name=S22
+State:
+	name=S23
+State:
+	name=S24
+State:
+	name=S25
+State:
+	name=S26
+State:
+	name=S27
+State:
+	name=S28
+State:
+	name=S29
+State:
+	name=S30
+State:
+	name=S31
+State:
+	name=S32
+State:
+	name=S33
+State:
+	name=S34
+State:
+	name=S35
+State:
+	name=S36
+State:
+	name=S37
+State:
+	name=S38
+State:
+	name=S39
+State:
+	name=S40
+State:
+	name=S41
+State:
+	name=S42
+State:
+	name=S43
+State:
+	name=S44
+State:
+	name=S45
+State:
+	name=S46
+State:
+	name=S47
+State:
+	name=S48
+State:
+	name=S49
+State:
+	name=S50
+State:
+	name=S51
+State:
+	name=S52
+State:
+	name=S53
+State:
+	name=S54
+State:
+	name=S55
+State:
+	name=S56
+State:
+	name=S57
+State:
+	name=S58
+State:
+	name=S59
+State:
+	name=S60
+State:
+	name=S61
+State:
+	name=S62
+State:
+	name=S63
+State:
+	name=S64
+State:
+	name=S65
+State:
+	name=S66
+State:
+	name=S67
+State:
+	name=S68
+State:
+	name=S69
+State:
+	name=S70
+State:
+	name=S71
+State:
+	name=S72
+State:
+	name=S73
+State:
+	name=S74
+State:
+	name=S75
+State:
+	name=S76
+State:
+	name=S77
+State:
+	name=S78
+State:
+	name=S79
+State:
+	name=S80
+State:
+	name=S81
+State:
+	name=S82
+State:
+	name=S83
+State:
+	name=S84
+State:
+	name=S85
+State:
+	name=S86
+State:
+	name=S87
+State:
+	name=S88
+State:
+	name=S89
+State:
+	name=S90
+State:
+	name=S91
+State:
+	name=S92
+State:
+	name=S93
+State:
+	name=S94
+State:
+	name=S95
+State:
+	name=S96
+State:
+	name=S97
+State:
+	name=S98
+State:
+	name=S99
+State:
+	name=S100
+State:
+	name=S101
+State:
+	name=S102
+State:
+	name=S103
+State:
+	name=S104
+State:
+	name=S105
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[1];click
+	cond=
+	action=
+Transition:
+	name=T2
+	src=S1
+	tgt=S2
+	event=input(schoolname,schooladdress,schoolphone,numsemesters,numperiods,apoint,bpoint,cpoint,dpoint,fpoint,sitetext,sitemessage);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table/tbody/tr/td/form/table[2]/tbody/tr/td/input;click
+	cond=
+	action=
+Transition:
+	name=T3
+	src=START
+	tgt=S3
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=
+Transition://点击添加按钮add
+	name=T4
+	src=S3
+	tgt=S4
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=addterm==1
+Transition://添加term，点击add term
+	name=T5
+	src=S4
+	tgt=S3
+	event=input(title,startdate,enddate);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&addterm=1
+	action=
+Transition://未勾选对象，点击编辑edit
+	name=T6
+	src=S3
+	tgt=S5
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editterm==1
+	action=
+Transition://出来弹框，
+	name=T7
+	src=S5
+	tgt=S6
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond= document.terms.selectterm.value=0
+	action=setmassage("you must select a term to edit")
+Transition://点击OK
+	name=T8
+	src=S6
+	tgt=S3
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选对象编辑
+	name=T9
+	src=S3
+	tgt=S7
+	event=;xpath=//input[@name='delete[]'];click
+	cond=
+	action=selectterm=1
+Transition://点击edit
+	name=T10
+	src=S7
+	tgt=S8
+	event=;xpath=//input[@value='Edit'];click
+	cond=selectterm=1
+	action=
+Transition://进行edit
+	name=T11
+	src=S8
+	tgt=S3
+	event=input(title,startdate,enddate);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&( document.terms.selectterm.value=1)
+	action=
+Transition://未勾选对象点击删除
+	name=T12
+	src=S3
+	tgt=S9
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=document.terms.selectterm.value =0
+	action=setmassage("you must select a term to delete")
+Transition:
+	name=T13
+	src=S9
+	tgt=S3
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选对象
+	name=T14
+	src=S3
+	tgt=S10
+	event=;xpath=//input[@value='Delete'];click
+	cond=
+	action=selectterm>0
+Transition://点击删除
+	name=T15
+	src=S10
+	tgt=S11
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=selectterm>0
+	action=
+Transition://确定删除
+	name=T16
+	src=S11
+	tgt=S3
+	event=;link text=OK;click
+	cond=
+	action=
+T3-T16,S3-S11
+
+Transition://semester模块
+	name=T17
+	src=START
+	tgt=S12
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[3];click
+	cond=
+	action=
+Transition://点击添加add按钮
+	name=T18
+	src=S12
+	tgt=S13
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=addsemester=1
+Transition://添加semester
+	name=T19
+	src=S13
+	tgt=S12
+	event=input(title,term,startdate,middate,enddate,half);xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&(term!=" ")&&(middate!=" ")&&(half!=" ")&&(addsemester=1)
+	action=
+Transition://未勾选对象点击edit,出现弹框
+	name=T20
+	src=S12
+	tgt=S14
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editsemester=0
+	action=setmassage("you must select a semester to edit")
+Transition://点击ok
+	name=T21
+	src=S14
+	tgt=S12
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选对象
+	name=T22
+	src=S12
+	tgt=S15
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/table/tbody/tr[3]/td[1]/input;click
+	cond=
+	action=selectsemester=1
+Transition://点击编辑按钮edit
+	name=T23
+	src=S15
+	tgt=S16
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectsemester=1
+	action=editsemester=1
+Transition://编辑
+	name=T24
+	src=S16
+	tgt=S12
+	event=input(title,term,startdate,middate,enddate,half);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&(term!=" ")&&(middate!=" ")&&(half!=" ")&&(editsemester=1)
+	action=
+Transition://未勾选删除对象，出现弹框提示
+	name=T25
+	src=S12
+	tgt=S17
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deletesemester=0
+	action=setmassage("you must select a term to delete")
+Transition://点击弹框ok
+	name=T26
+	src=S17
+	tgt=S12
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选删除对象
+	name=T27
+	src=S12
+	tgt=S18
+	event=;xpath=//input[@value='Delete'];click
+	cond=
+	action=deletesemester=1
+Transition://点击删除，出现对话框
+	name=T28
+	src=S18
+	tgt=S19
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deletesemester=1
+	action=
+Transition://点击ok,确认删除
+	name=T29
+	src=S19
+	tgt=S12
+	event=;link text=OK;click
+	cond=
+	action=
+T17-T29,S12-S19
+
+Transition://classes模块
+	name=T30
+	src=START
+	tgt=S20
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[4];click
+	cond=
+	action=
+Transition://点击添加
+	name=T31
+	src=S20
+	tgt=S21
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[1]/tbody/tr/td/input[1];click
+	cond=
+	action=
+Transition://添加class
+	name=T32
+	src=S21
+	tgt=S20
+	event=input(title,teacher,semester,sectionnum,roomnum,periodnum,substitute);xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[6];click
+	cond=(title!=" ")&&(teacher!=" ")&&(semester!=" ")&&(sectionnum!=" ")&&(roomnum!=" ")&&(periodnum!=" ")
+	action=
+Transition://未勾选对象
+	name=T33
+	src=S20
+	tgt=S22
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[1]/tbody/tr/td/input[1];click
+	cond=delete[]=0
+	action=setmassage("you must select a term to edit")
+Transition://点击ok
+	name=T34
+	src=S22
+	tgt=S20
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选对象
+	name=T35
+	src=S20
+	tgt=S23
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[1]/tbody/tr/td/table/tbody/tr[2]/td[1]/input;click
+	cond=
+	action=selectclass=1
+Transition://点击编辑
+	name=T36
+	src=S23
+	tgt=S24
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[1]/tbody/tr/td/input[2];click
+	cond=selectclass=1
+	action=editclass=1
+Transition:
+	name=T37
+	src=S24
+	tgt=S20
+	event=input(title,teacher,semester,sectionnum,roomnum,periodnum,substitute);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[6];click
+	cond=(title!=" ")&&(teacher!=" ")&&(semester!=" ")&&(sectionnum!=" ")&&(roomnum!=" ")&&(periodnum!=" ")
+	action=
+Transition://未勾选删除对象
+	name=T38
+	src=S20
+	tgt=S25
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[1]/tbody/tr/td/input[3];click
+	cond=deleteclass=0
+	action=setmassage("you must select a term to delete")
+Transition:
+	name=T39
+	src=S25
+	tgt=S20
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选删除对象
+	name=T40
+	src=S20
+	tgt=S26
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[1]/tbody/tr/td/table/tbody/tr[2]/td[1]/input;click
+	cond=
+	action=deleteclass>0
+Transition://点击删除
+	name=T41
+	src=S26
+	tgt=S27
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[1]/tbody/tr/td/input[3];click
+	cond=deleteclass>0
+	action=
+Transition://确认
+	name=T42
+	src=S27
+	tgt=S20
+	event=;link text=OK;click
+	cond=
+	action=
+T42,S27
+
+Transition://user模块
+	name=T43
+	src=START
+	tgt=S28
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[1]/form/a[5];click
+	cond=
+	action=
+Transition:
+	name=T44
+	src=S28
+	tgt=S29
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition://添加用户
+	name=T45
+	src=S29
+	tgt=S28
+	event=input(username,password,password2,type);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(username!=" ")&&(password!=" ")&&(password2!=" ")&&(type!=" ")&&(password=password2)
+	action=
+Transition://未勾选编辑对象
+	name=T46
+	src=S28
+	tgt=S30
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=edituser=0
+	action=setmassage("you must select a user to edit")
+Transition:
+	name=T47
+	src=S30
+	tgt=S28
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选编辑对象
+	name=T48
+	src=S28
+	tgt=S31
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/table/tbody/tr[8]/td[1]/input;click
+	cond=edituser=1
+	action=
+Transition://点击编辑
+	name=T49
+	src=S31
+	tgt=S32
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=edituser=1
+	action=
+Transition://编辑，密码不匹配
+	name=T50
+	src=S32
+	tgt=S33
+	event=input(username,password,password2,type);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=password!=password2
+	action=setmessage("Password do not match!")
+Transition://点击ok,回到编辑页面，继续输用户
+	name=T51
+	src=S33
+	tgt=S32
+	event=;link text =OK;click
+	cond=
+	action=
+Transition://点击取消退出编辑
+	name=T52
+	src=S32
+	tgt=S28
+	event=xpath=//input[@value='Cancel'];click
+	cond=
+	action=
+Transition://编辑，密码匹配
+	name=T53
+	src=S32
+	tgt=S28
+	event=input(username,password,password2,type);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=password=password2
+	action=
+Transition://未勾选删除对象
+	name=T54
+	src=S28
+	tgt=S33
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteuser=0
+	action=setmassage("you must select a user to delete")
+Transition:
+	name=T55
+	src=S33
+	tgt=S28
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选删除对象
+	name=T56
+	src=S28
+	tgt=S34
+	event=;xpath=(//input[@name='delete[]'])[3];click
+	cond=
+	action=deleteuser>0
+Transition://删除对象
+	name=T57
+	src=S34
+	tgt=S35
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteuser>0
+	action=
+Transition:
+	name=T58
+	src=S35
+	tgt=S28
+	event=;link text=OK;click
+	cond=
+	action=
+T58，S35
+
+Transition://teacher模块
+	name=T59
+	src=START
+	tgt=S36
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[6];click
+	cond=
+	action=
+Transition:
+	name=T60
+	src=S36
+	tgt=S37
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T61
+	src=S37
+	tgt=S36
+	event=input(fname,lname,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")
+	action=
+Transition://未勾选编辑对象
+	name=T62
+	src=S36
+	tgt=S38
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editteacher=0
+	action=setmassage("you must select a teacher to edit")
+Transition:
+	name=T63
+	src=S38
+	tgt=S36
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选编辑对象
+	name=T64
+	src=S36
+	tgt=S39
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/table/tbody/tr[3]/td[1]/input;click
+	cond=editteacher=1
+	action=selectteacher=1
+Transition://点击编辑
+	name=T65
+	src=S39
+	tgt=S40
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectteacher=1
+	action=editteacher=1
+Transition:
+	name=T66
+	src=S40
+	tgt=S36
+	event=input(fname,lname,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(editteacher=1)
+	action=
+Transition:
+	name=T67
+	src=S36
+	tgt=S41
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteteacher=0
+	action=setmassage("you must select a teacher to delete")
+Transition:
+	name=T68
+	src=S41
+	tgt=S36
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选删除对象
+	name=T69
+	src=S36
+	tgt=S42
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/table/tbody/tr[3]/td[1]/input;click
+	cond=
+	action=
+Transition://点击删除
+	name=T70
+	src=S42
+	tgt=S43
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteteacher=1
+	action=
+Transition:
+	name=T71
+	src=S43
+	tgt=S36
+	event=;link text=OK;click
+	cond=
+	action=
+T71,S43
+
+Transition://student模块
+	name=T72
+	src=START
+	tgt=S44
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[7];click
+	cond=
+	action=
+Transition:
+	name=T73
+	src=S44
+	tgt=S45
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T74
+	src=S45
+	tgt=S44
+	event=input(fname,mi,lname,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(mi!=" ")
+	action=
+Transition:
+	name=T75
+	src=S44
+	tgt=S46
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editstudent=0
+	action=setmassage("you must select a student to edit")
+Transition:
+	name=T76
+	src=S46
+	tgt=S44
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选对象
+	name=T77
+	src=S44
+	tgt=S47
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/table/tbody/tr[3]/td[1]/input;click
+	cond=editstudent=1
+	action=
+Transition://点击编辑
+	name=T78
+	src=S47
+	tgt=S48
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editstudent=1
+	action=
+Transition://编辑
+	name=T79
+	src=S48
+	tgt=S44
+	event=input(fname,mi,lname,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(mi!=" ")
+	action=
+Transition:
+	name=T80
+	src=S44
+	tgt=S49
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deletestudent=0
+	action=setmassage("you must select a student to delete")
+Transition:
+	name=T81
+	src=S49
+	tgt=S44
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选删除对象
+	name=T82
+	src=S44
+	tgt=S50
+	event=;xpath=(//input[@name='delete[]'])[3];click
+	cond=deletestudent>0
+	action=
+Transition://点击删除
+	name=T83
+	src=S50
+	tgt=S51
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deletestudent>0
+	action=
+Transition:
+	name=T84
+	src=S51
+	tgt=S44
+	event=;link text=OK;click
+	cond=
+	action=
+T84,S51
+
+Transition://Registration模块
+	name=T85
+	src=START
+	tgt=S52
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[8];click
+	cond=
+	action=
+Transition://输入三个参数，点击add按钮
+	name=T86
+	src=S52
+	tgt=S53
+	event=input(student,semester,class);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/table/tbody/tr[2]/td/input;down_click
+	cond=
+	action=
+Transition://未勾选对象，点击delete
+	name=T87
+	src=S53
+	tgt=S54
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=deletereg=0
+	action=setmassage("you must select a registration to delete")
+Transition:
+	name=T88
+	src=S54
+	tgt=S53
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选对象
+	name=T89
+	src=S53
+	tgt=S55
+	event=;xpath=(//input[@name='delete[]'])[2];click
+	cond=
+	action=deletereg>0
+Transition://点击删除
+	name=T90
+	src=S55
+	tgt=S56
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=deletereg>0
+	action=
+Transition:
+	name=T91
+	src=S56
+	tgt=S53
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T92
+	src=S53
+	tgt=S57
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T93
+	src=S57
+	tgt=S53
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/h1/table[1]/tbody/tr/td/form/table[2]/tbody/tr/td/p/input[1];click
+	cond=
+	action=
+T93,S57
+
+Transition://attendance模块
+	name=T94
+	src=START
+	tgt=S58
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[9];click
+	cond=
+	action=
+Transition://输入两个数，点击add
+	name=T95
+	src=S58
+	tgt=S59
+	event=input(semester,student);xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];down_click
+	cond=
+	action=
+Transition:
+	name=T96
+	src=S59
+	tgt=S58
+	event=input(attdate,type);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(attdate!=" ")&&(type!=" ")
+	action=
+Transition:
+	name=T97
+	src=S58
+	tgt=S60
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deletereg=0
+	action=setmassage("You must select an attendance record to delete")
+Transition:
+	name=T98
+	src=S60
+	tgt=S58
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选对象
+	name=T99
+	src=S58
+	tgt=S61
+	event=;xpath=(//input[@name='delete[]'])[3];click
+	cond=
+	action=deletereg>0
+Transition://点击删除
+	name=T100
+	src=S61
+	tgt=S62
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=deletereg>0
+	action=
+Transition:
+	name=T101
+	src=S62
+	tgt=S58
+	event=;link text=OK;click
+	cond=
+	action=
+T101，S62
+
+Transition://parent模块
+	name=T102
+	src=START
+	tgt=S63
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[10];click
+	cond=
+	action=
+Transition:
+	name=T103
+	src=S63
+	tgt=S64
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T104
+	src=S64
+	tgt=S63
+	event=input(fname,lname,student,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(student!=" ")
+	action=
+Transition:
+	name=T105
+	src=S63
+	tgt=S65
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editparent=0
+	action=setmassage("you must select a parents to edit")
+Transition:
+	name=T106
+	src=S65
+	tgt=S63
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选编辑对象
+	name=T107
+	src=S63
+	tgt=S66
+	event=;xpath=(//input[@name='delete[]'])[4];click
+	cond=
+	action=editparent=1
+Transition://点击编辑
+	name=T108
+	src=S66
+	tgt=S67
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editparent=1
+	action=
+Transition:
+	name=T109
+	src=S67
+	tgt=S63
+	event=input(fname,lname,student,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(student!=" ")
+	action=
+Transition:
+	name=T110
+	src=S63
+	tgt=S68
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteparent=0
+	action=setmassage("you must select a parent to delete")
+Transition:
+	name=T111
+	src=S68
+	tgt=S63
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选删除对象
+	name=T112
+	src=S63
+	tgt=S69
+	event=;xpath=(//input[@name='delete[]'])[4];click
+	cond=
+	action=deleteparent>0
+Transition:
+	name=T113
+	src=S69
+	tgt=S70
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteparent>0
+	action=
+Transition:
+	name=T114
+	src=S70
+	tgt=S63
+	event=;link text=OK;click
+	cond=
+	action=
+T114,S70
+
+Transition://announcment模块
+	name=T115
+	src=START
+	tgt=S71
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[11];click
+	cond=
+	action=
+Transition:
+	name=T116
+	src=S71
+	tgt=S72
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T117
+	src=S72
+	tgt=S71
+	event=input(title,message);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(document.value.title!=" ")&&(document.value.message!=" ")
+	action=
+Transition:
+	name=T118
+	src=S71
+	tgt=S73
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editannouncement=0
+	action=setmassage("you must select a announcement to edit")
+Transition:
+	name=T119
+	src=S73
+	tgt=S71
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选编辑对象
+	name=T120
+	src=S71
+	tgt=S74
+	event=;xpath=(//input[@name='delete[]'])[3];click
+	cond=editannouncement=1
+	action=
+Transition://点击编辑
+	name=T121
+	src=S74
+	tgt=S75
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editannouncement=1
+	action=
+Transition:
+	name=T122
+	src=S75
+	tgt=S71
+	event=input(title,message);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(message!=" ")
+	action=
+Transition:
+	name=T123
+	src=S71
+	tgt=S76
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteannouncement=0
+	action=setmassage("you must select a announcement to delete")
+Transition:
+	name=T124
+	src=S76
+	tgt=S71
+	event=;link text=OK;click
+	cond=
+	action=
+Transition://勾选删除对象
+	name=T125
+	src=S71
+	tgt=S77
+	event=;xpath=(//input[@name='delete[]'])[2];click
+	cond=deleteannouncement>0
+	action=
+Transition:
+	name=T126
+	src=S77
+	tgt=S78
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=deleteannouncement>0
+	action=
+Transition:
+	name=T127
+	src=S78
+	tgt=S71
+	event=;link text=OK;click
+	cond=
+	action=
+T127，S78
+
+Transition:
+	name=T128
+	src=START
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T129
+	src=S2
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T130
+	src=S11
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T131
+	src=S19
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T132
+	src=S27
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T133
+	src=S35
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T134
+	src=S43
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T135
+	src=S51
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T136
+	src=S57
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T137
+	src=S62
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T138
+	src=S70
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T139
+	src=S78
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=

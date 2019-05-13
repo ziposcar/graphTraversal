@@ -1,0 +1,179 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=Card(pin, sb, cb)
+	cond=
+	action=write("Enter PIN"); attempts = 0
+Transition:
+	name=T2
+	src=S1
+	tgt=S1
+	event=PIN(P)
+	cond=(P != pin) & (attempts < 3)
+	action=write("Wrong Pin, ReEnter"); attempts = attempts+1; Prompt_for_PIN()
+Transition:
+	name=T3
+	src=S1
+	tgt=Exit
+	event=PIN(P)
+	cond=(P != pin) & (attempts == 3)
+	action=write("Wrong Pin, Ejecting Card")
+Transition:
+	name=T4
+	src=S1
+	tgt=S2
+	event=PIN(P)
+	cond=(P == pin)
+	action=write("Select a Language English/Spanish")
+Transition:
+	name=T5
+	src=S2
+	tgt=S3
+	event=English()
+	cond=
+	action=l='e'; write(" Savings / Checking")
+Transition:
+	name=T6
+	src=S2
+	tgt=S3
+	event=Spanish()
+	cond=
+	action=l='s'; write(" Ahorros / Corriente")
+Transition:
+	name=T7
+	src=S3
+	tgt=S4
+	event=Checking()
+	cond=
+	action=
+Transition:
+	name=T8
+	src=S3
+	tgt=S6
+	event=Savings()
+	cond=
+	action=
+Transition:
+	name=T9
+	src=S4
+	tgt=S3
+	event=Done()
+	cond=
+	action=
+Transition:
+	name=T10
+	src=S6
+	tgt=S3
+	event=Done()
+	cond=
+	action=
+Transition:
+	name=T11
+	src=S4
+	tgt=S5
+	event=Balance()
+	cond=l=='s'
+	action=write("Balanza=",cb)
+Transition:
+	name=T12
+	src=S4
+	tgt=S5
+	event=Balance()
+	cond=l=='e'
+	action=write("Balance=",cb)
+Transition:
+	name=T13
+	src=S4
+	tgt=S5
+	event=Deposit(d)
+	cond=
+	action=cb = cb + d
+Transition:
+	name=T14
+	src=S4
+	tgt=S5
+	event=Withdrawal(w)
+	cond=
+	action=cb =cb - w
+Transition:
+	name=T15
+	src=S5
+	tgt=S4
+	event=Receipt()
+	cond=l=='e'
+	action=Print("Balance=",cb); write("Savings/Checking")
+Transition:
+	name=T16
+	src=S5
+	tgt=S4
+	event=Receipt()
+	cond=l=='s'
+	action=Print("Balanza=",cb); write("Ahorros/Corriente")
+Transition:
+	name=T17
+	src=S6
+	tgt=S7
+	event=Withdrawal(w)
+	cond=
+	action=sb=sb - w
+Transition:
+	name=T18
+	src=S6
+	tgt=S7
+	event=Deposit(d)
+	cond=
+	action=sb = sb + d
+Transition:
+	name=T19
+	src=S6
+	tgt=S7
+	event=Balance()
+	cond=l=='e'
+	action=write("Balance=",sb)
+Transition:
+	name=T20
+	src=S6
+	tgt=S7
+	event=Balance()
+	cond=l=='s'
+	action=write("Balanza=",cb)
+Transition:
+	name=T21
+	src=S7
+	tgt=S6
+	event=Receipt()
+	cond=l=='e'
+	action=Print("Balance=",sb); write("Savings/Checking")
+Transition:
+	name=T22
+	src=S7
+	tgt=S6
+	event=Receipt()
+	cond=l=='s'
+	action=Print("Balanza=",sb); write("Ahorros/Corriente")
+Transition:
+	name=T23
+	src=S3
+	tgt=Exit
+	event=Exit()
+	cond=
+	action=write("Ejecting card");

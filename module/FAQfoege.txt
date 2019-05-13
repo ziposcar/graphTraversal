@@ -1,0 +1,169 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=;link=Administration;click
+	cond=null
+	action=submit()
+Transition:
+	name=T2
+	src=S1
+	tgt=S2
+	event=input(formuser,formpassword);name=submit;click
+	cond=(formuser != ADMINUSER ) || (formpassword != ADMINPASSWORD )
+	action=setmessage("Log In Failed.")
+Transition:
+	name=T3
+	src=S1
+	tgt=S3
+	event=input(formuser,formpassword);name=submit;click
+	cond=(formuser == ADMINUSER ) && (formpassword == ADMINPASSWORD )
+	action=submit()
+Transition:
+	name=T4
+	src=S3
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr[2]/td[1]/a;click
+	cond=null
+	action=submit()
+Transition:
+	name=T5
+	src=S3
+	tgt=S3
+	event=;link=Admin;click
+	cond=null
+	action=submit()
+Transition:
+	name=T6
+	src=S3
+	tgt=S5
+	event=;link=View Your Document;click
+	cond=null
+	action=submit()
+Transition:
+	name=T7
+	src=S5
+	tgt=S3
+	event=;link=Back to Topics List;click
+	cond=null
+	action=submit()
+Transition:
+	name=T8
+	src=S3
+	tgt=S3
+	event=input(newTitle,newContext,newParent,newOrder);xpath=//td/input;click
+	cond=null
+	action=submit()
+Transition:
+	name=T9
+	src=S3
+	tgt=S4
+	event=;xpath=/html/body/center/center/table/tbody/tr/td/table/tbody/tr[2]/td[6]/small/a/img;click
+	cond=null
+	action=submit()
+Transition:
+	name=T10
+	src=S4
+	tgt=S3
+	event=;xpath=//a[contains(text(),'HERE')];click
+	cond=null
+	action=submit()
+Transition:
+	name=T11
+	src=S3
+	tgt=S6
+	event=;xpath=/html/body/center/center/table/tbody/tr/td/table/tbody/tr[2]/td[1]/small/a;click
+	cond=null
+	action=submit()
+Transition:
+	name=T12
+	src=S6
+	tgt=S6
+	event=input(topicTitle,topicContext,topicParent,topicOrder,topicPublish);xpath=/html/body/center/center/center/table[1]/tbody/tr/td/table/tbody/tr[7]/td/input;click
+	cond=null
+	action=submit()
+Transition:
+	name=T13
+	src=S6
+	tgt=S9
+	event=;xpath=//a/big;click
+	cond=null
+	action=submit()
+Transition:
+	name=T14
+	src=S9
+	tgt=S7
+	event=input(faqText);xpath=/html/body/center/center/center/table[2]/tbody/tr/td/table/tbody/tr[3]/td/input;click
+	cond=null
+	action=submit()
+Transition:
+	name=T15
+	src=S7
+	tgt=S6
+	event=;link=Modify Changes;click
+	cond=null
+	action=submit()
+Transition:
+	name=T16
+	src=S7
+	tgt=S6
+	event=;link=Commit Changes;click
+	cond=null
+	action=submit()
+Transition:
+	name=T17
+	src=S9
+	tgt=S8
+	event=;xpath=/html/body/center/center/center/table[2]/tbody/tr/td/table/tbody/tr[1]/td[2]/a/img;click
+	cond=null
+	action=submit()
+Transition:
+	name=T18
+	src=S8
+	tgt=S6
+	event=;link=HERE;click
+	cond=null
+	action=submit()
+Transition:
+	name=T19
+	src=S6
+	tgt=S5
+	event=;link=View Your Document;click
+	cond=null
+	action=submit()
+Transition:
+	name=T20
+	src=S9
+	tgt=S9
+	event=input(topicTitle,topicContext,topicParent,topicOrder,topicPublish);xpath=/html/body/center/center/center/table[1]/tbody/tr/td/table/tbody/tr[7]/td/input;click
+	cond=null
+	action=submit()
+Transition:
+	name=T21
+	src=S9
+	tgt=S5
+	event=;link=View Your Document;click
+	cond=null
+	action=submit()

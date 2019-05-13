@@ -1,0 +1,258 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=S11
+State:
+	name=S12
+State:
+	name=S13
+State:
+	name=S14
+State:
+	name=S15
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=input(semester);name=semester;click
+	cond=
+	action=
+Transition://点个class链接
+	name=T2
+	src=S1
+	tgt=S2
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr[2]/td/table/tbody/tr[2]/td/a;click
+	cond=
+	action=
+Transition://进入主页面
+	name=T3
+	src=S2
+	tgt=S2
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=page2=1;submit()
+Transition:
+	name=T4
+	src=S2
+	tgt=S2
+	event=input(aperc,bperc,cperc,dperc);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table/tbody/tr/td/input[1];click
+	cond=
+	action=
+Transition:
+	name=T5
+	src=S2
+	tgt=S3
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[3];click
+	cond=
+	action=page2=2;submit()
+Transition:
+	name=T6
+	src=S3
+	tgt=S4
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectassignment == 0 || selectassignment > 1
+	action=alert('You must select a assignment to edit.')
+Transition:
+	name=T7
+	src=S4
+	tgt=S3
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T8
+	src=S3
+	tgt=S5
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[3];click
+	cond=selectassignment <= 0
+	action=alert('You must select a assignment to delete.')
+Transition:
+	name=T9
+	src=S5
+	tgt=S3
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T10
+	src=S3
+	tgt=S6
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition://添加
+	name=T11
+	src=S6
+	tgt=S3
+	event=input(title,task,total,assigneddate,duedate);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=
+	action=
+Transition://取消
+	name=T12
+	src=S6
+	tgt=S3
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[2];click
+	cond=
+	action=
+Transition://勾选对象
+	name=T13
+	src=S3
+	tgt=S7
+	event=;name=delete[];click
+	cond=
+	action=selectassignment == 1
+Transition://点击编辑
+	name=T14
+	src=S7
+	tgt=S8
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectassignment == 1
+	action=
+Transition://编辑
+	name=T15
+	src=S8
+	tgt=S3
+	event=input(title,task,total,assigneddate,duedate);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=
+	action=
+Transition://取消编辑
+	name=T16
+	src=S8
+	tgt=S3
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[2];click
+	cond=
+	action=
+Transition:
+	name=T17
+	src=S2
+	tgt=S9
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[4];click
+	cond=
+	action=page2=3;submit()
+Transition://选择一个assignment
+	name=T18
+	src=S9
+	tgt=S9
+	event=input(assignment);name=assignment;click
+	cond=
+	action=
+Transition:
+	name=T19
+	src=S9
+	tgt=S10
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=selectgrade == 0 || selectgrade > 1
+	action=alert('You must select a grade to edit.')
+Transition:
+	name=T20
+	src=S10
+	tgt=S9
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T21
+	src=S9
+	tgt=S11
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectgrade < 0 
+	action=alert('You must select a grade to delete.')
+Transition:
+	name=T22
+	src=S11
+	tgt=S9
+	event=;link=OK;click
+	cond=
+	action=
+Transition://勾选对象
+	name=T23
+	src=S9
+	tgt=S12
+	event=;name=delete[];click
+	cond=
+	action=selectgrade = Math.round(selectgrade) + 1
+Transition://点击编辑
+	name=T24
+	src=S12
+	tgt=S13
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=selectgrade == 1 
+	action=
+Transition:
+	name=T25
+	src=S13
+	tgt=S9
+	event=input(gradedate,points,comment,late);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=
+	action=
+Transition:
+	name=T26
+	src=S13
+	tgt=S9
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[2];click
+	cond=
+	action=
+Transition:
+	name=T27
+	src=S2
+	tgt=S14
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[5];click
+	cond=
+	action=page2=8;submit()
+Transition:
+	name=T28
+	src=S14
+	tgt=S3
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T29
+	src=S2
+	tgt=S15
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[6];click
+	cond=
+	action=page2=9;submit()
+Transition:
+	name=T30
+	src=S15
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[7];click
+	cond=
+	action=logout=1;submit()
+Transition:
+	name=T31
+	src=S3
+	tgt=S2
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=
+Transition:
+	name=T32
+	src=S9
+	tgt=S2
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=

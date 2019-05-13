@@ -1,0 +1,761 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=S11
+State:
+	name=S12
+State:
+	name=S13
+State:
+	name=S14
+State:
+	name=S15
+State:
+	name=S16
+State:
+	name=S17
+State:
+	name=S18
+State:
+	name=S19
+State:
+	name=S20
+State:
+	name=S21
+State:
+	name=S22
+State:
+	name=S23
+State:
+	name=S24
+State:
+	name=S25
+State:
+	name=S26
+State:
+	name=S27
+State:
+	name=S28
+State:
+	name=S29
+State:
+	name=S30
+State:
+	name=S31
+State:
+	name=S32
+State:
+	name=S33
+State:
+	name=S34
+State:
+	name=S35
+State:
+	name=S36
+State:
+	name=S37
+State:
+	name=S38
+State:
+	name=S39
+State:
+	name=S40
+State:
+	name=S41
+State:
+	name=S42
+State:
+	name=S43
+State:
+	name=S44
+State:
+	name=S45
+State:
+	name=S46
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[1];click
+	cond=
+	action=
+Transition:
+	name=T2
+	src=S1
+	tgt=S2
+	event=input(schoolname,schooladdress,schoolphone,numsemesters,numperiods,apoint,bpoint,cpoint,dpoint,fpoint,sitetext,sitemessage);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table/tbody/tr/td/form/table[2]/tbody/tr/td/input;click
+	cond=
+	action=
+Transition:
+	name=T3
+	src=START
+	tgt=S3
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=
+Transition:
+	name=T4
+	src=S3
+	tgt=S4
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=addterm==1
+Transition:
+	name=T5
+	src=S4
+	tgt=S3
+	event=input(title,startdate,enddate);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&addterm=1
+	action=
+Transition:
+	name=T6
+	src=S3
+	tgt=S5
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond= document.terms.selectterm.value=0
+	action=setmassage("you must select a term to edit")
+Transition:
+	name=T7
+	src=S5
+	tgt=S3
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T8
+	src=S3
+	tgt=S6
+	event=;xpath=//td/input;click
+	cond=
+	action=selectterm=1
+Transition:
+	name=T9
+	src=S6
+	tgt=S7
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectterm=1
+	action=
+Transition:
+	name=T10
+	src=S7
+	tgt=S3
+	event=input(title,startdate,enddate);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&( document.terms.selectterm.value=1)
+	action=
+Transition:
+	name=T11
+	src=START
+	tgt=S8
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[3];click
+	cond=
+	action=
+Transition:
+	name=T12
+	src=S8
+	tgt=S9
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=addsemester=1
+Transition:
+	name=T13
+	src=S9
+	tgt=S8
+	event=input(title,term,startdate,middate,enddate,half);xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&(term!=" ")&&(middate!=" ")&&(half!=" ")&&(addsemester=1)
+	action=
+Transition:
+	name=T14
+	src=S8
+	tgt=S10
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editsemester=0
+	action=setmassage("you must select a semester to edit")
+Transition:
+	name=T15
+	src=S10
+	tgt=S8
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T16
+	src=S8
+	tgt=S11
+	event=;name=delete[];click
+	cond=
+	action=selectsemester=1
+Transition:
+	name=T17
+	src=S11
+	tgt=S12
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectsemester=1
+	action=editsemester=1
+Transition:
+	name=T18
+	src=S12
+	tgt=S8
+	event=input(title,term,startdate,middate,enddate,half);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(startdate!=" ")&&(enddate!=" ")&&(term!=" ")&&(middate!=" ")&&(half!=" ")&&(editsemester=1)
+	action=
+Transition:
+	name=T19
+	src=START
+	tgt=S13
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[4];click
+	cond=
+	action=
+Transition:
+	name=T20
+	src=S13
+	tgt=S14
+	event=;name=add;click
+	cond=
+	action=
+Transition:
+	name=T21
+	src=S14
+	tgt=S13
+	event=input(title,teacher,semester,sectionnum,roomnum,periodnum,substitute);xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[6];click
+	cond=(title!=" ")&&(teacher!=" ")&&(semester!=" ")&&(sectionnum!=" ")&&(roomnum!=" ")&&(periodnum!=" ")
+	action=
+Transition:
+	name=T22
+	src=S13
+	tgt=S15
+	event=;name=edit;click
+	cond=delete[]=0
+	action=setmassage("you must select a class to edit")
+Transition:
+	name=T23
+	src=S15
+	tgt=S13
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T24
+	src=S13
+	tgt=S16
+	event=;xpath=//td/input;click
+	cond=
+	action=selectclass=1
+Transition:
+	name=T25
+	src=S16
+	tgt=S17
+	event=;name=edit;click
+	cond=selectclass=1
+	action=editclass=1
+Transition:
+	name=T26
+	src=S17
+	tgt=S13
+	event=input(title,teacher,semester,sectionnum,roomnum,periodnum,substitute);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[6];click
+	cond=(title!=" ")&&(teacher!=" ")&&(semester!=" ")&&(sectionnum!=" ")&&(roomnum!=" ")&&(periodnum!=" ")
+	action=
+Transition:
+	name=T27
+	src=START
+	tgt=S18
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[5];click
+	cond=
+	action=
+Transition:
+	name=T28
+	src=S18
+	tgt=S19
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T29
+	src=S19
+	tgt=S18
+	event=input(username,password,password2,type);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(username!=" ")&&(password!=" ")&&(password2!=" ")&&(type!=" ")&&(password=password2)
+	action=
+Transition:
+	name=T30
+	src=S18
+	tgt=S20
+	event=;id=edituser;click
+	cond=edituser=0
+	action=setmassage("you must select a user to edit")
+Transition:
+	name=T31
+	src=S20
+	tgt=S18
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T32
+	src=S18
+	tgt=S21
+	event=;xpath=//tr[6]/td/input;click
+	cond=
+	action=edituser=1
+Transition:
+	name=T33
+	src=S21
+	tgt=S22
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=edituser=1
+	action=
+Transition:
+	name=T34
+	src=S22
+	tgt=S23
+	event=input(username,password,password2,type);id=edit;click
+	cond=password!=password2
+	action=setmessage("Password do not match!")
+Transition:
+	name=T35
+	src=S23
+	tgt=S22
+	event=;link text =OK;click
+	cond=
+	action=
+Transition:
+	name=T36
+	src=S22
+	tgt=S18
+	event=;id=cancel;click
+	cond=
+	action=
+Transition:
+	name=T37
+	src=S22
+	tgt=S18
+	event=input(username,password,password2,type);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=password=password2
+	action=
+Transition:
+	name=T38
+	src=START
+	tgt=S24
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[6];click
+	cond=
+	action=
+Transition:
+	name=T39
+	src=S24
+	tgt=S25
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T40
+	src=S25
+	tgt=S24
+	event=input(fname,lname,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")
+	action=
+Transition:
+	name=T41
+	src=S24
+	tgt=S26
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editteacher=0
+	action=setmassage("you must select a teacher to edit")
+Transition:
+	name=T42
+	src=S26
+	tgt=S24
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T43
+	src=S24
+	tgt=S27
+	event=;xpath=//td/input;click
+	cond=editteacher=1
+	action=selectteacher=1
+Transition:
+	name=T44
+	src=S27
+	tgt=S28
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=selectteacher=1
+	action=editteacher=1
+Transition:
+	name=T45
+	src=S28
+	tgt=S24
+	event=input(fname,lname,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(editteacher=1)
+	action=
+Transition:
+	name=T46
+	src=START
+	tgt=S29
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[7];click
+	cond=
+	action=
+Transition:
+	name=T47
+	src=S29
+	tgt=S30
+	event=;id=add;click
+	cond=
+	action=
+Transition:
+	name=T48
+	src=S30
+	tgt=S29
+	event=input(fname,mi,lname,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(mi!=" ")
+	action=
+Transition:
+	name=T49
+	src=S29
+	tgt=S31
+	event=;id=edit;click
+	cond=editstudent=0
+	action=setmassage("you must select a student to edit")
+Transition:
+	name=T50
+	src=S31
+	tgt=S29
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T51
+	src=S29
+	tgt=S32
+	event=;xpath=//td/input;click
+	cond=editstudent=1
+	action=
+Transition:
+	name=T52
+	src=S32
+	tgt=S33
+	event=;id=edit;click
+	cond=editstudent=1
+	action=
+Transition:
+	name=T53
+	src=S33
+	tgt=S29
+	event=input(fname,mi,lname,username);xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(mi!=" ")
+	action=
+Transition:
+	name=T54
+	src=START
+	tgt=S34
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[8];click
+	cond=
+	action=
+Transition:
+	name=T55
+	src=S34
+	tgt=S34
+	event=input(student,semester,class);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/table/tbody/tr[2]/td/input;down_click
+	cond=
+	action=
+Transition:
+	name=T56
+	src=START
+	tgt=S35
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[9];click
+	cond=
+	action=
+Transition:
+	name=T57
+	src=S35
+	tgt=S36
+	event=input(semester,student);xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];down_click
+	cond=
+	action=
+Transition:
+	name=T58
+	src=S36
+	tgt=S35
+	event=input(attdate,type);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(attdate!=" ")&&(type!=" ")
+	action=
+Transition:
+	name=T59
+	src=START
+	tgt=S37
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[10];click
+	cond=
+	action=
+Transition:
+	name=T60
+	src=S37
+	tgt=S38
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T61
+	src=S38
+	tgt=S37
+	event=input(fname,lname,student,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(student!=" ")
+	action=
+Transition:
+	name=T62
+	src=S37
+	tgt=S39
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editparent=0
+	action=setmassage("you must select a parents to edit")
+Transition:
+	name=T63
+	src=S39
+	tgt=S37
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T64
+	src=S37
+	tgt=S40
+	event=;xpath=//td/input;click
+	cond=
+	action=editparent=1
+Transition:
+	name=T65
+	src=S40
+	tgt=S41
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editparent=1
+	action=
+Transition:
+	name=T66
+	src=S41
+	tgt=S37
+	event=input(fname,lname,student,username);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(fname!=" ")&&(lname!=" ")&&(username!=" ")&&(student!=" ")
+	action=
+Transition:
+	name=T67
+	src=START
+	tgt=S42
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[11];click
+	cond=
+	action=
+Transition:
+	name=T68
+	src=S42
+	tgt=S43
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[1];click
+	cond=
+	action=
+Transition:
+	name=T69
+	src=S43
+	tgt=S42
+	event=input(title,message);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(document.value.title!=" ")&&(document.value.message!=" ")
+	action=
+Transition:
+	name=T70
+	src=S42
+	tgt=S44
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editannouncement=0
+	action=setmassage("you must select a announcement to edit")
+Transition:
+	name=T71
+	src=S44
+	tgt=S42
+	event=;link text=OK;click
+	cond=
+	action=
+Transition:
+	name=T72
+	src=S42
+	tgt=S45
+	event=;xpath=//td/input;click
+	cond=editannouncement=1
+	action=
+Transition:
+	name=T73
+	src=S45
+	tgt=S46
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table[1]/tbody/tr/td/form/input[2];click
+	cond=editannouncement=1
+	action=
+Transition:
+	name=T74
+	src=S46
+	tgt=S42
+	event=input(title,message);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/form/table[2]/tbody/tr/td/input[1];click
+	cond=(title!=" ")&&(message!=" ")
+	action=
+Transition:
+	name=T75
+	src=S2
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T76
+	src=S3
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T77
+	src=S8
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T78
+	src=S13
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T79
+	src=S18
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T80
+	src=S24
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T81
+	src=S29
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T82
+	src=S34
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T83
+	src=S35
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T84
+	src=S37
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T85
+	src=S42
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[12];click
+	cond=
+	action=
+Transition:
+	name=T86
+	src=S1
+	tgt=S3
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=
+Transition:
+	name=T87
+	src=S3
+	tgt=S8
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[3];click
+	cond=
+	action=
+Transition:
+	name=T88
+	src=S8
+	tgt=S13
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[4];click
+	cond=
+	action=
+Transition:
+	name=T89
+	src=S13
+	tgt=S18
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[5];click
+	cond=
+	action=
+Transition:
+	name=T90
+	src=S18
+	tgt=S24
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[6];click
+	cond=
+	action=
+Transition:
+	name=T91
+	src=S24
+	tgt=S29
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[7];click
+	cond=
+	action=
+Transition:
+	name=T92
+	src=S29
+	tgt=S34
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[8];click
+	cond=
+	action=
+Transition:
+	name=T93
+	src=S34
+	tgt=S35
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[9];click
+	cond=
+	action=
+Transition:
+	name=T94
+	src=S35
+	tgt=S37
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[10];click
+	cond=
+	action=
+Transition:
+	name=T95
+	src=S37
+	tgt=S42
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[11];click
+	cond=
+	action=

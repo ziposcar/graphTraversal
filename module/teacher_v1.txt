@@ -1,0 +1,255 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7x
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=START
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[1];click
+	cond=
+	action=page2=0;submit()
+Transition:
+	name=T2
+	src=START
+	tgt=START
+	event=input(semester_x);name=semester;click
+	cond=
+	action=submit()
+Transition:
+	name=T3
+	src=START
+	tgt=S1
+	event=;link=$class[1];click
+	cond=
+	action=submit()
+Transition:
+	name=T4
+	src=S1
+	tgt=S1
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=page2=1;submit()
+Transition:
+	name=T5
+	src=S1
+	tgt=S1
+	event=input(aperc,bperc,cperc,dperc);xpath=xpath=(//input[@ value='Update'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T6
+	src=S1
+	tgt=S2
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[3];click
+	cond=
+	action=page2=2;submit()
+Transition:
+	name=T7
+	src=S2
+	tgt=S3
+	event=;xpath=(//input[@ value='$assignment[0]'])[2];click
+	cond=document.assignments.elements[row].checked
+	action=selectassignment = Math.round(selectassignment) + 1
+Transition:
+	name=T8
+	src=S3
+	tgt=S2
+	event=;xpath=(//input[@ value='$assignment[0]'])[2];click
+	cond=!(document.assignments.elements[row].checked)
+	action=selectassignment = Math.round(selectassignment) - 1
+Transition:
+	name=T9
+	src=S2
+	tgt=S2
+	event=;link=$i;click
+	cond=
+	action=submit()
+Transition:
+	name=T10
+	src=S2
+	tgt=S2
+	event=;xpath=(//input[@ value='Edit'])[2];click
+	cond=!((!( selectassignment == 1 ))&&( selectassignment > 1 ))
+	action=alert('You must select a assignment to edit.')
+Transition:
+	name=T11
+	src=S2
+	tgt=S2
+	event=;xpath=(//input[@ value='Delete'])[2];click
+	cond=!( selectassignment > 0 )
+	action=alert('You must select a assignment to delete.')
+Transition:
+	name=T12
+	src=S2
+	tgt=S4
+	event=;xpath=(//input[@ value='Add'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T13
+	src=S4
+	tgt=S2
+	event=input(title,task,total,assigneddate,duedate);xpath=(//input[@  value='Add Assignment'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T14
+	src=S4
+	tgt=S2
+	event=;xpath=(//input[@ value='Cancel'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T15
+	src=S3
+	tgt=S5
+	event=;xpath=(//input[@ value='Edit'])[2];click
+	cond=selectassignment == 1
+	action=submit()
+Transition:
+	name=T16
+	src=S5
+	tgt=S2
+	event=input(title,task,total,assigneddate,duedate);xpath=(//input[@  value='Edit Assignment'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T17
+	src=S5
+	tgt=S2
+	event=;xpath=(//input[@ value='Cancel'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T18
+	src=S3
+	tgt=S2
+	event=;xpath=(//input[@ value='Delete'])[2];click
+	cond=( selectassignment > 0 )&&( confirmed == true )
+	action=submit()
+Transition:
+	name=T19
+	src=S1
+	tgt=S6
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[4];click
+	cond=
+	action=page2=3;submit()
+Transition:
+	name=T20
+	src=S6
+	tgt=S6
+	event=;name=assignment;click
+	cond=
+	action=submit()
+Transition:
+	name=T21
+	src=S6
+	tgt=S6
+	event=;xpath=(//input[@ value='Edit'])[2];click
+	cond=!((!( selectgrade == 1 ))&&( selectgrade > 1 ))
+	action=alert('You must select a grade to edit.')
+Transition:
+	name=T22
+	src=S6
+	tgt=S6
+	event=;xpath=(//input[@ value='Delete'])[2];click
+	cond=!( selectgrade > 0 )
+	action=alert('You must select a grade to delete.')
+Transition:
+	name=T23
+	src=S6
+	tgt=S7x
+	event=;xpath=(//input[@ value='$student[0]'])[2];click
+	cond=document.grades.elements[row].checked
+	action=selectgrade = Math.round(selectgrade) + 1
+Transition:
+	name=T24
+	src=S7x
+	tgt=S6
+	event=;xpath=(//input[@ value='$student[0]'])[2];click
+	cond=!(document.grades.elements[row].checked)
+	action=selectgrade = Math.round(selectgrade) - 1
+Transition:
+	name=T25
+	src=S7x
+	tgt=S8
+	event=;xpath=(//input[@ value='Edit'])[2];click
+	cond=selectgrade == 1 
+	action=submit()
+Transition:
+	name=T26
+	src=S8
+	tgt=S6
+	event=input(gradedate,points,comment,late);xpath=(//input[@  value='Edit Grade'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T27
+	src=S8
+	tgt=S6
+	event=;xpath=(//input[@ value='Cancel'])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T28
+	src=S7x
+	tgt=S6
+	event=;xpath=(//input[@ value='Delete'])[2];click
+	cond=( selectgrade > 0 )&&( confirmed == true )
+	action=submit()
+Transition:
+	name=T29
+	src=S1
+	tgt=S9
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[5];click
+	cond=
+	action=page2=8;submit()
+Transition:
+	name=T30
+	src=S9
+	tgt=S2
+	event=;xpath=(//input[@  value=' Back '])[2];click
+	cond=
+	action=submit()
+Transition:
+	name=T31
+	src=S1
+	tgt=S10
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[6];click
+	cond=
+	action=page2=9;submit()
+Transition:
+	name=T32
+	src=S10
+	tgt=S10
+	event=;link=$i;click
+	cond=
+	action=submit()
+Transition:
+	name=T33
+	src=START
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[7];click
+	cond=
+	action=logout=1;submit()

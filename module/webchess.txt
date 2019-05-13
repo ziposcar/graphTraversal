@@ -1,0 +1,280 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=S11
+State:
+	name=S12
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S3
+	event=input(txtNick,pwdPassword);name=login;click
+	cond=
+	action=
+Transition:
+	name=T2
+	src=START
+	tgt=S2
+	event=;name=newAccount;click
+	cond=
+	action=window.open('newuser.php', '_self')
+Transition:
+	name=T3
+	src=S2
+	tgt=S3
+	event=input(txtFirstName,txtLastName,txtNick,pwdPassword,pwdPassword2,rdoHistory,rdoHistorylayout,rdoTheme,txtReload);name=btnCreate;click
+	cond=pwdPassword == pwdPassword2
+	action=document.userdata.submit();
+Transition:
+	name=T4
+	src=S2
+	tgt=S2
+	event=input(txtFirstName,txtLastName,txtNick,pwdPassword,pwdPassword2,rdoHistory,rdoHistorylayout,rdoTheme,txtReload);name=btnCreate;click
+	cond=pwdPassword !== pwdPassword2)
+	action=alert("Sorry, the two password fields don't match. Please try again.")
+Transition:
+	name=T5
+	src=S3
+	tgt=S4
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[5]/a;click
+	cond=
+	action=viewgame
+Transition:
+	name=T6
+	src=S4
+	tgt=S12
+	event=;xpath=/html/body/div[2]/div[2]/div[7]/div/div/div[1]/form/div/table/tbody/tr/td[2]/a;click
+	cond=
+	action=loadGame(".$tmpGame['gameID'].")
+Transition:
+	name=T7
+	src=S12
+	tgt=Exit
+	event=;id=btnLogout;click
+	cond=
+	action=
+Transition:
+	name=T8
+	src=S3
+	tgt=S5
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[6]/a;click
+	cond=
+	action=preferences
+Transition:
+	name=T9
+	src=S3
+	tgt=S6
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[7]/a;click
+	cond=
+	action=personalinfo
+Transition:
+	name=T10
+	src=S3
+	tgt=Exit
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[9]/a;click
+	cond=
+	action=logout
+Transition:
+	name=T11
+	src=S3
+	tgt=S7
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[2]/a;click
+	cond=
+	action=invitations
+Transition:
+	name=T12
+	src=S3
+	tgt=S8
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[3]/a;click
+	cond=
+	action=Messages
+Transition:
+	name=T13
+	src=S3
+	tgt=S9
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[4]/a;click
+	cond=
+	action=challenge
+Transition:
+	name=T14
+	src=S3
+	tgt=S3
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[1]/a;click
+	cond=
+	action=continuegame
+Transition:
+	name=T15
+	src=S3
+	tgt=S3
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[8]/a;click
+	cond=
+	action=reload
+Transition:
+	name=T16
+	src=S5
+	tgt=S3
+	event=input(rdoHistory,rdoHistorylayout,rdoTheme,txtReload);xpath=/html/body/div[2]/div[2]/div[2]/div/div/div[1]/form/div/input[1];click
+	cond=
+	action=post("mainmenu.php")
+Transition:
+	name=T17
+	src=S6
+	tgt=S3
+	event=input(txtFirstName,txtLastName,pwdOldPassword,pwdPassword,pwdPassword2);xpath=/html/body/div[2]/div[2]/div[1]/div/div/div[1]/form/div/input[1];click
+	cond=pwdPassword == pwdPassword2
+	action=submit();
+Transition:
+	name=T18
+	src=S8
+	tgt=S10
+	event=input(player);xpath=/html/body/div[2]/div[2]/div[6]/div/div/div[1]/form[1]/div/input;click
+	cond=
+	action=MessagePlayer( getObject('player').value )
+Transition:
+	name=T19
+	src=S9
+	tgt=S3
+	event=input(opponent,color);xpath=/html/body/div[2]/div[2]/div[3]/div/div/div[1]/form/div/input[1];click
+	cond=
+	action=post("mainmenu.php")
+Transition:
+	name=T20
+	src=S9
+	tgt=S3
+	event=;xpath=/html/body/div[2]/div[2]/div[3]/div/div/div[1]/form/div/input[2];click
+	cond=
+	action=window.open('mainmenu.php', '_self')
+Transition:
+	name=T21
+	src=S10
+	tgt=S3
+	event=input(txtTitle,txtMessage);name=newMessage;click
+	cond=
+	action=
+Transition:
+	name=T22
+	src=S6
+	tgt=S6
+	event=input(txtFirstName,txtLastName,pwdOldPassword,pwdPassword,pwdPassword2);xpath=/html/body/div[2]/div[2]/div[1]/div/div/div[1]/form/div/input[1];click
+	cond= pwdPassword !== pwdPassword2
+	action=alert("Sorry, the two password fields don't match.  Please try again.")
+Transition:
+	name=T23
+	src=S8
+	tgt=S11
+	event=;xpath=/html/body/div[2]/div[2]/div[6]/div/div/div[1]/form[2]/div/table/tbody/tr[1]/td[1]/a;click
+	cond=
+	action=
+Transition:
+	name=T24
+	src=S11
+	tgt=S3
+	event=;xpath=/html/body/div/div[1]/p/a;click
+	cond=
+	action=
+Transition:
+	name=T25
+	src=S3
+	tgt=Exit
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[9]/a;click
+	cond=
+	action=logout
+Transition:
+	name=T26
+	src=S7
+	tgt=Exit
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[9]/a;click
+	cond=
+	action=logout
+Transition:
+	name=T27
+	src=S4
+	tgt=S7
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[2]/a;click
+	cond=
+	action=
+Transition:
+	name=T28
+	src=S7
+	tgt=S4
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[5]/a;click
+	cond=
+	action=
+Transition:
+	name=T29
+	src=S7
+	tgt=S8
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[3]/a;click
+	cond=
+	action=
+Transition:
+	name=T30
+	src=S8
+	tgt=S7
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[2]/a;click
+	cond=
+	action=
+Transition:
+	name=T31
+	src=S8
+	tgt=S6
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[7]/a;click
+	cond=
+	action=
+Transition:
+	name=T32
+	src=S6
+	tgt=S8
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[3]/a;click
+	cond=
+	action=
+Transition:
+	name=T33
+	src=S6
+	tgt=S9
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[4]/a;click
+	cond=
+	action=
+Transition:
+	name=T34
+	src=S9
+	tgt=S6
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[7]/a;click
+	cond=
+	action=
+Transition:
+	name=T35
+	src=S9
+	tgt=S5
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[6]/a;click
+	cond=
+	action=
+Transition:
+	name=T36
+	src=S5
+	tgt=S9
+	event=;xpath=/html/body/div[2]/div[1]/ul/li[4]/a;click
+	cond=
+	action=

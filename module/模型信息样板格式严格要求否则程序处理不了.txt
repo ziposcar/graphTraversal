@@ -1,0 +1,219 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=S11
+State:
+	name=S12
+State:
+	name=S13
+State:
+	name=S14
+State:
+	name=S15
+State:
+	name=S16
+State:
+	name=S17
+State:
+	name=S18
+State:
+	name=S19
+State:
+	name=S20
+State:
+	name=S21
+State:
+	name=S22
+State:
+	name=S23
+State:
+	name=S24
+State:
+	name=S25
+State:
+	name=S26
+State:
+	name=S27
+State:
+	name=S28
+State:
+	name=S29
+State:
+	name=S30
+State:
+	name=S31
+State:
+	name=S32
+State:
+	name=S33
+State:
+	name=S34
+State:
+	name=S35
+State:
+	name=S36
+State:
+	name=S37
+State:
+	name=S38
+State:
+	name=S39
+State:
+	name=S40
+State:
+	name=S41
+State:
+	name=S42
+State:
+	name=S43
+State:
+	name=S44
+State:
+	name=S45
+State:
+	name=S46
+State:
+	name=S47
+State:
+	name=S48
+State:
+	name=S49
+State:
+	name=S50
+State:
+	name=S51
+State:
+	name=S52
+State:
+	name=S53
+State:
+	name=S54
+State:
+	name=S55
+State:
+	name=S56
+State:
+	name=S57
+State:
+	name=S58
+State:
+	name=S59
+State:
+	name=S60
+State:
+	name=S61
+State:
+	name=S62
+State:
+	name=S63
+State:
+	name=S64
+State:
+	name=S65
+State:
+	name=S66
+State:
+	name=S67
+State:
+	name=S68
+State:
+	name=S69
+State:
+	name=S70
+State:
+	name=S71
+State:
+	name=S72
+State:
+	name=S73
+State:
+	name=S74
+State:
+	name=S75
+State:
+	name=S76
+State:
+	name=S77
+State:
+	name=S78
+State:
+	name=S79
+State:
+	name=S80
+State:
+	name=S81
+State:
+	name=S82
+State:
+	name=S83
+State:
+	name=S84
+State:
+	name=S85
+State:
+	name=S86
+State:
+	name=S87
+State:
+	name=S88
+State:
+	name=S89
+State:
+	name=S90
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=ValidateLogin(username,password);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table/tbody/tr[1]/td[2]/div/form/table/tbody/tr[3]/td[2]/input;click
+	cond=(username=" ")||(password=" ")||(password!=result)
+	action=showMessage("Invalid username or password!")
+Transition:
+	name=T2
+	src=S1
+	tgt=S1
+	event=ValidateLogin(username,password);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table/tbody/tr[1]/td[2]/div/form/table/tbody/tr[3]/td[2]/input;click
+	cond=(username=" ")||(password=" ")||(password!=result)
+	action=showMessage("Invalid username or password!")
+Transition:
+	name=T3
+	src=START
+	tgt=S2
+	event=ValidateLogin(username,password);xpath=/html/body/table[2]/tbody/tr[2]/td[3]/table/tbody/tr/td/table/tbody/tr[1]/td[2]/div/form/table/tbody/tr[3]/td[2]/input;click
+	cond=(username!=" ")&&(password!=" ")
+	action=
+Transition:
+	name=T4
+	src=S2
+	tgt=S3
+	event=;xpath=/html/body/table[2]/tbody/tr[2]/td[1]/form/a[1];click
+	cond=
+	action=
+
+
+获取到信息后，撰写模型文件要求：
+1.严格按照上述格式书写模型，用sublime软件查格式，
+2.模型文件不允许有中文，因此最好click事件的对象用xpath,css,name表示，link text方式表示容易出现中文，python语言编写的程序在词法分析时容易出错
+3.模型里面所有的符号如括号，分号，引号等均需要采用英式输入，不能采用中式，原因同上
+4.event用三部分表示，以;隔开，第一部分表示页面上的输入变量(如果有的话，没有就为空)，第二部分表示事件的操作对象，第三部分表示事件的类型

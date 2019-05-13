@@ -1,0 +1,354 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=S11
+State:
+	name=S12
+State:
+	name=S13
+State:
+	name=S14
+State:
+	name=S15
+State:
+	name=S16
+State:
+	name=S17
+State:
+	name=S18
+State:
+	name=S19
+State:
+	name=S20
+State:
+	name=S21
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=;link=add new;click
+	cond=
+	action=
+Transition:
+	name=T2
+	src=START
+	tgt=S2
+	event=;link=next birthdays;click
+	cond=
+	action=
+Transition:
+	name=T3
+	src=START
+	tgt=S3
+	event=;link=print all;click
+	cond=
+	action=
+Transition:
+	name=T4
+	src=START
+	tgt=S4
+	event=;link=home;click
+	cond=
+	action=
+Transition:
+	name=T5
+	src=START
+	tgt=S5
+	event=;link=groups;click
+	cond=
+	action=
+Transition:
+	name=T6
+	src=START
+	tgt=S6
+	event=;link=print phones;click
+	cond=
+	action=
+Transition:
+	name=T7
+	src=START
+	tgt=S7
+	event=;link=map;click
+	cond=
+	action=
+Transition:
+	name=T8
+	src=START
+	tgt=S8
+	event=;link=export;click
+	cond=
+	action=
+Transition:
+	name=T9
+	src=START
+	tgt=S9
+	event=;link=import;click
+	cond=
+	action=
+Transition:
+	name=T10
+	src=S1
+	tgt=S10
+	event=;xpath=//table[@id='maintable']/tbody/tr[2]/td[8]/a/img;click
+	cond=
+	action=
+Transition:
+	name=T11
+	src=S10
+	tgt=S1
+	event=input(firstname,middlename,lastname,nickname,photo,company,title,address,home,mobile,work,fax,email,email2,email3,homepage,bday,bmonth,byear,aday,amonth,ayear,address2,phone2,notes);xpath=(//input[@name='update'])[2];click
+	cond=
+	action=
+Transition:
+	name=T12
+	src=S1
+	tgt=S11
+	event=;xpath=//table[@id='maintable']/tbody/tr[2]/td[7]/a/img;click
+	cond=
+	action=
+Transition:
+	name=T13
+	src=S11
+	tgt=S10
+	event=;name=modifiy;click
+	cond=
+	action=
+Transition:
+	name=T14
+	src=S1
+	tgt=S12
+	event=;id=MassCB;click
+	cond=
+	action=
+Transition:
+	name=T15
+	src=S12
+	tgt=S13
+	event=;xpath=//input[@value='Delete'];click
+	cond=
+	action=
+Transition:
+	name=T16
+	src=S13
+	tgt=S1
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T17
+	src=S2
+	tgt=S14
+	event=input(address);xpath=//div[@id='content']/form/input[2];click
+	cond=
+	action=
+Transition:
+	name=T18
+	src=S14
+	tgt=S1
+	event=input(firstname,middlename,lastname,nickname,photo,title,company,address,home,mobile,work,fax,email,email2,email3,homepage,bday,bmonth,byear,aday,amonth,ayear,new_group,address2,phone2,notes);xpath=/html/body/div/div[4]/form/input[21];click
+	cond=
+	action=
+Transition:
+	name=T19
+	src=S3
+	tgt=S15
+	event=;name=new;click
+	cond=
+	action=
+Transition:
+	name=T20
+	src=S15
+	tgt=S16
+	event=input(group_name,group_parent_id,group_header,group_footer);xpath=//input[@name='submit'];click
+	cond=
+	action=
+Transition:
+	name=T21
+	src=S16
+	tgt=S3
+	event=;link=group page;click
+	cond=
+	action=
+Transition:
+	name=T22
+	src=S3
+	tgt=S17
+	event=;name=selected[];click
+	cond=
+	action=
+Transition:
+	name=T23
+	src=S17
+	tgt=S18
+	event=;name=edit;click
+	cond=
+	action=
+Transition:
+	name=T24
+	src=S18
+	tgt=S16
+	event=input(group_name,group_parent_id,group_header,group_footer);name=update;click
+	cond=
+	action=
+Transition:
+	name=T25
+	src=S4
+	tgt=S19
+	event=;xpath=//table[@id='birthdays']/tbody/tr[2]/td[7]/a/img;click
+	cond=
+	action=
+Transition:
+	name=T26
+	src=S19
+	tgt=S20
+	event=;name=modifiy;click
+	cond=
+	action=
+Transition:
+	name=T27
+	src=S20
+	tgt=S1
+	event=input(firstname,middlename,lastname,nickname,photo,company,title,address,home,mobile,work,fax,email,email2,email3,homepage,bday,bmonth,byear,aday,amonth,ayear,address2,phone2,notes);xpath=(//input[@name='update'])[2];click
+	cond=
+	action=
+Transition:
+	name=T28
+	src=S4
+	tgt=S20
+	event=;xpath=//table[@id='birthdays']/tbody/tr[2]/td[8]/a/img;click
+	cond=
+	action=	
+Transition:
+	name=T29
+	src=S9
+	tgt=S21
+	event=input(file);name=submit;click
+	cond=
+	action=
+Transition:
+	name=T30
+	src=S21
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T31
+	src=S1
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T32
+	src=S2
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T33
+	src=S3
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T34
+	src=S4
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T35
+	src=S5
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T36
+	src=S6
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T37
+	src=S7
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T38
+	src=S8
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T39
+	src=S9
+	tgt=Exit
+	event=;link=Logout;click
+	cond=
+	action=
+Transition:
+	name=T40
+	src=S1
+	tgt=S2
+	event=;link=next birthdays;click
+	cond=
+	action=
+Transition:
+	name=T41
+	src=S2
+	tgt=S3
+	event=;link=groups;click
+	cond=
+	action=
+Transition:
+	name=T42
+	src=S3
+	tgt=s4
+	event=;link=next birthdays;click
+	cond=
+	action=
+Transition:
+	name=T46
+	src=S4
+	tgt=S8
+	event=;link=export ;click
+	cond=
+	action=
+Transition:
+	name=T47
+	src=S8
+	tgt=S9
+	event=;link=import;click
+	cond=
+	action=

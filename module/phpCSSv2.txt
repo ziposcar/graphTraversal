@@ -1,0 +1,779 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=S5
+State:
+	name=S6
+State:
+	name=S7
+State:
+	name=S8
+State:
+	name=S9
+State:
+	name=S10
+State:
+	name=S11
+State:
+	name=S12
+State:
+	name=S13
+State:
+	name=S14
+State:
+	name=S15
+State:
+	name=S16
+State:
+	name=S17
+State:
+	name=S18
+State:
+	name=S19
+State:
+	name=S20
+State:
+	name=S21
+State:
+	name=S22
+State:
+	name=S23
+State:
+	name=S24
+State:
+	name=S25
+State:
+	name=S26
+State:
+	name=S27
+State:
+	name=S28
+State:
+	name=S29
+State:
+	name=S30
+State:
+	name=S31
+State:
+	name=S32
+State:
+	name=S33
+State:
+	name=S34
+State:
+	name=S35
+State:
+	name=S36
+State:
+	name=S37
+State:
+	name=S38
+State:
+	name=S39
+State:
+	name=S40
+State:
+	name=S41
+State:
+	name=S42
+State:
+	name=S43
+State:
+	name=S44
+State:
+	name=S45
+State:
+	name=S46
+State:
+	name=S47
+State:
+	name=S48
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=S1
+	event=;link=公告管理;click
+	cond=
+	action=
+Transition:
+	name=T2
+	src=START
+	tgt=S2
+	event=;link=页面管理;click
+	cond=
+	action=
+Transition:
+	name=T3
+	src=START
+	tgt=S3
+	event=;link=友情链接;click
+	cond=
+	action=
+Transition:
+	name=T4
+	src=START
+	tgt=S4
+	event=;link=留言管理;click
+	cond=
+	action=
+Transition:
+	name=T5
+	src=START
+	tgt=S5
+	event=;link=文件管理;click
+	cond=
+	action=
+Transition:
+	name=T6
+	src=START
+	tgt=S6
+	event=;link=添加文章;click
+	cond=
+	action=
+Transition:
+	name=T7
+	src=START
+	tgt=S31
+	event=;link=文章管理;click
+	cond=
+	action=
+Transition:
+	name=T8
+	src=START
+	tgt=S7
+	event=;link=栏目管理;click
+	cond=
+	action=
+Transition:
+	name=T9
+	src=START
+	tgt=S8
+	event=;link=垃圾箱管理;click
+	cond=
+	action=
+Transition:
+	name=T10
+	src=START
+	tgt=S9
+	event=;link=管理员账号;click
+	cond=
+	action=
+Transition:
+	name=T11
+	src=START
+	tgt=S10
+	event=;link=网站设置;click
+	cond=
+	action=
+Transition:
+	name=T12
+	src=START
+	tgt=S11
+	event=;link=数据备份;click
+	cond=
+	action=
+Transition:
+	name=T13
+	src=START
+	tgt=S12
+	event=;link=数据还原;click
+	cond=
+	action=
+Transition:
+	name=T14
+	src=S1
+	tgt=S14
+	event=;name=button;click
+	cond=
+	action=
+Transition:
+	name=T15
+	src=S1
+	tgt=S14
+	event=;xpath=//img[@alt='修改'];click
+	cond=
+	action=
+Transition:
+	name=T16
+	src=S14
+	tgt=S15
+	event=input(title,content);xpath=//*[@id="button"];click
+	cond=
+	action=
+Transition:
+	name=T17
+	src=S15
+	tgt=S16
+	event=;xpath=//img[@alt='删除'];click
+	cond=
+	action=confirm('请确认是否删除！')
+Transition:
+	name=T18
+	src=S16
+	tgt=S15
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T19
+	src=S15
+	tgt=S17
+	event=;xpath=(//input[@name='checkbox'])[2];click
+	cond=
+	action=
+Transition:
+	name=T20
+	src=S17
+	tgt=S18
+	event=;xpath=//*[@id="DeleteCheckboxButton"];click
+	cond=
+	action=confirm('请确认是否删除！')
+Transition:
+	name=T21
+	src=S18
+	tgt=S1
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T22
+	src=S2
+	tgt=S18
+	event=;name=button;click
+	cond=
+	action=
+Transition:
+	name=T23
+	src=S2
+	tgt=S18
+	event=;xpath=//img[@alt='修改'];click
+	cond=
+	action=
+Transition:
+	name=T24
+	src=S18
+	tgt=S19
+	event=input(title,code);xpath=//*[@id="button"];click
+	cond=
+	action=
+Transition:
+	name=T25
+	src=S19
+	tgt=S20
+	event=;xpath=(//img[@alt='删除'])[2];clcik
+	cond=
+	action=confirm('请确认是否删除！')
+Transition:
+	name=T26
+	src=S20
+	tgt=S19
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T27
+	src=S19
+	tgt=S21
+	event=;xpath=(//input[@name='checkbox'])[2];click
+	cond=
+	action=
+Transition:
+	name=T28
+	src=S21
+	tgt=S22
+	event=;xpath=//*[@id="DeleteCheckboxButton"];click
+	cond=
+	action=confirm('请确认是否删除！')
+Transition:
+	name=T29
+	src=S22
+	tgt=S2
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T30
+	src=S3
+	tgt=S22
+	event=;name=button;click
+	cond=
+	action=
+Transition:
+	name=T31
+	src=S3
+	tgt=S22
+	event=;xpath=//img[@alt='修改'];click
+	cond=
+	action=
+Transition:
+	name=T32
+	src=S22
+	tgt=S23
+	event=input(name,url,logo,description,seq);xpath=//*[@id="button"];click
+	cond=
+	action=
+Transition:
+	name=T33
+	src=S23
+	tgt=S24
+	event=;xpath=(//img[@alt='删除'])[2];click
+	cond=
+	action=confirm('请确认是否删除！')
+Transition:
+	name=T34
+	src=S24
+	tgt=S23
+	event=;xpath=(//img[@alt='删除'])[2];click
+	cond=
+	action=
+Transition:
+	name=T35
+	src=S23
+	tgt=S25
+	event=;name=checkbox11;click
+	cond=
+	action=
+Transition:
+	name=T36
+	src=S25
+	tgt=S26
+	event=;xpath=//*[@id="DeleteCheckboxButton"];click
+	cond=
+	action=confirm('请确认是否删除！')
+Transition:
+	name=T37
+	src=S26
+	tgt=S3
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T38
+	src=S4
+	tgt=S27
+	event=;xpath=/html/body/table/tbody/tr/td/table[2]/tbody/tr[1]/th/label[2];click
+	cond=
+	action=
+Transition:
+	name=T39
+	src=S27
+	tgt=S4
+	event=input(reply_16);xpath=/html/body/table/tbody/tr/td/table[2]/tbody/tr[2]/td/div/input;click
+	cond=
+	action=
+Transition:
+	name=T40
+	src=S5
+	tgt=S28
+	event=input(file);name=file;upload
+	cond=
+	action=
+Transition:
+	name=T41
+	src=S28
+	tgt=S29
+	event=;xpath=/html/body/table/tbody/tr/td/table[2]/tbody/tr[2]/td[1]/input;click
+	cond=
+	action=
+Transition:
+	name=T42
+	src=S29
+	tgt=S30
+	event=;id=DeleteCheckboxButton;click
+	cond=
+	action=
+Transition:
+	name=T43
+	src=S30
+	tgt=S5
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T44
+	src=S6
+	tgt=S31
+	event=input(title,subtitle,pic,source,author,cid,resume,content);name=button;click
+	cond=
+	action=
+Transition:
+	name=T45
+	src=S31
+	tgt=S6
+	event=;xpath=/html/body/table/tbody/tr/td/table[1]/tbody/tr/td[2]/input;click
+	cond=
+	action=
+Transition:
+	name=T46
+	src=S31
+	tgt=S32
+	event=;xpath=/html/body/table/tbody/tr/td/table[2]/tbody/tr[2]/td[6]/img;click
+	cond=
+	action=
+Transition:
+	name=T47
+	src=S32
+	tgt=S31
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T48
+	src=S31
+	tgt=S33
+	event=;xpath=/html/body/table/tbody/tr/td/table[2]/tbody/tr[2]/td[1]/input;click
+	cond=
+	action=
+Transition:
+	name=T49
+	src=S33
+	tgt=S34
+	event=;id=DeleteCheckboxButton;click
+	cond=
+	action=
+Transition:
+	name=T50
+	src=S34
+	tgt=S31
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T51
+	src=S33
+	tgt=S35
+	event=input(selectCid);id=updateCategoryButton;click
+	cond=
+	action=
+Transition:
+	name=T52
+	src=S35
+	tgt=S31
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T53
+	src=S31
+	tgt=S31
+	event=input(keywords);name=Submit5;click
+	cond=
+	action=
+Transition:
+	name=T54
+	src=S7
+	tgt=S36
+	event=;xpath=/html/body/table/tbody/tr/td/table[1]/tbody/tr/td[3]/input;click
+	cond=
+	action=
+Transition:
+	name=T55
+	src=S36
+	tgt=S37
+	event=input(pid,name,seq);name=button;click
+	cond=
+	action=
+Transition:
+	name=T56
+	src=S37
+	tgt=S38
+	event=;xapth=/html/body/table/tbody/tr/td/table[2]/tbody/tr[2]/td[4]/a[4];click
+	cond=
+	action=
+Transition:
+	name=T57
+	src=S38
+	tgt=S7
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T58
+	src=S37
+	tgt=S39
+	event=;link=添加子栏目;click
+	cond=
+	action=
+Transition:
+	name=T59
+	src=S39
+	tgt=S37
+	event=input(name,seq);name=button;click
+	cond=
+	action=	
+Transition:
+	name=T60
+	src=S37
+	tgt=S6
+	event=;link=添加文章;click
+	cond=
+	action=
+Transition:
+	name=T61
+	src=S37
+	tgt=S36
+	event=;link=修改栏目;click
+	cond=
+	action=
+Transition:
+	name=T62
+	src=S8
+	tgt=S40
+	event=;name=checkbox;click
+	cond=
+	action=
+Transition:
+	name=T63
+	src=S40
+	tgt=S41
+	event=;id=DeleteCheckboxButton;click
+	cond=
+	action=confirm('请确认是否删除！')
+Transition:
+	name=T64
+	src=S41
+	tgt=S8
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T65
+	src=S40
+	tgt=S41
+	event=;id=updateCategoryButton;click
+	cond=
+	action=confirm('请确认是否还原！')
+Transition:
+	name=T66
+	src=S9
+	tgt=S42
+	event=;name=button;click
+	cond=
+	action=
+Transition:
+	name=T67
+	src=S42
+	tgt=S43
+	event=input(username,password,password2);name=button;click
+	cond=
+	action=
+Transition:
+	name=T68
+	src=S43
+	tgt=S44
+	event=;xpath=/html/body/table/tbody/tr/td/table[2]/tbody/tr[2]/td[4]/img;click
+	cond=
+	action=
+Transition:
+	name=T69
+	src=S44
+	tgt=S43
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T70
+	src=S43
+	tgt=S42
+	event=;xpath=/html/body/table/tbody/tr/td/table[2]/tbody/tr[2]/td[4]/a/img;click
+	cond=
+	action=
+Transition:
+	name=T71
+	src=S43
+	tgt=S45
+	event=;name=checkbox;click
+	cond=
+	action=
+Transition:
+	name=T72
+	src=S45
+	tgt=S46
+	event=;id=DeleteCheckboxButton;click
+	cond=
+	action=
+Transition:
+	name=T73
+	src=S46
+	tgt=S43
+	event=;link=OK;click
+	cond=
+	action=
+Transition:
+	name=T74
+	src=S10
+	tgt=S47
+	event=input(name,url,keywords,description,icp,masteremail);name=Submit;click
+	cond=
+	action=alter("保存成功")
+Transition:
+	name=T75
+	src=S11
+	tgt=S48
+	event=input(bfzl,filesize,weizhi);name=act;click
+	cond=
+	action=
+Transition:
+	name=T76
+	src=S12
+	tgt=S13
+	event=input(myfile);name=act;upload
+	cond=
+	action=
+Transition:
+	name=T77
+	src=S1
+	tgt=S2
+	event=;link=页面管理;click
+	cond=
+	action=
+Transition:
+	name=T78
+	src=S2
+	tgt=S3
+	event=;link=友情链接;click
+	cond=
+	action=
+Transition:
+	name=T79
+	src=S3
+	tgt=S4
+	event=;link=留言管理;click
+	cond=
+	action=
+Transition:
+	name=T80
+	src=S4
+	tgt=S5
+	event=;link=文件管理;click
+	cond=
+	action=
+Transition:
+	name=T81
+	src=S5
+	tgt=S6
+	event=;link=添加文章;click
+	cond=
+	action=
+Transition:
+	name=T82
+	src=S31
+	tgt=S7
+	event=;link=栏目管理;click
+	cond=
+	action=
+Transition:
+	name=T83
+	src=S7
+	tgt=S8
+	event=;link=垃圾箱管理;click
+	cond=
+	action=
+Transition:
+	name=T84
+	src=S8
+	tgt=S9
+	event=;link=管理员账号;click
+	cond=
+	action=
+Transition:
+	name=T85
+	src=S9
+	tgt=S10
+	event=;link=网站设置;click
+	cond=
+	action=
+Transition:
+	name=T86
+	src=S10
+	tgt=S11
+	event=;link=数据备份;click
+	cond=
+	action=
+Transition:
+	name=T87
+	src=S11
+	tgt=S12
+	event=;link=数据还原;click
+	cond=
+	action=
+Transition:
+	name=T88
+	src=S17
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T89
+	src=S26
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T90
+	src=S27
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T91
+	src=S30
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T92
+	src=S35
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T93
+	src=S39
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T94
+	src=S41
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T95
+	src=S46
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T96
+	src=S47
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=
+Transition:
+	name=T97
+	src=S48
+	tgt=Exit
+	event=;xpath=/html/body/table/tbody/tr/td[2]/a[3]/strong;click
+	cond=
+	action=

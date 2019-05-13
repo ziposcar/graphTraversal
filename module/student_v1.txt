@@ -1,0 +1,82 @@
+State:
+	name=START
+State:
+	name=S1
+State:
+	name=S2
+State:
+	name=S3
+State:
+	name=S4
+State:
+	name=Exit
+Transition:
+	name=T1
+	src=START
+	tgt=START
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[1];click
+	cond=
+	action=page2=0;submit()
+Transition:
+	name=T2
+	src=START
+	tgt=START
+	event=input(x_semester);name=semester;click
+	cond=
+	action=submit()
+Transition:
+	name=T3
+	src=START
+	tgt=S1
+	event=;link=$info[0];click
+	cond=
+	action=submit()
+Transition:
+	name=T4
+	src=S1
+	tgt=S1
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[2];click
+	cond=
+	action=page2=1;submit()
+Transition:
+	name=T5
+	src=S1
+	tgt=S2
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[3];click
+	cond=
+	action=page2=2;submit()
+Transition:
+	name=T6
+	src=S2
+	tgt=S2
+	event=;link=$i;click
+	cond=
+	action=submit()
+Transition:
+	name=T7
+	src=S2
+	tgt=S3
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[4];click
+	cond=
+	action=page2=3;submit()
+Transition:
+	name=T8
+	src=S3
+	tgt=S4
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[5];click
+	cond=
+	action=page2=4;submit()
+Transition:
+	name=T9
+	src=S4
+	tgt=S4
+	event=;link=$i;click
+	cond=
+	action=submit()
+Transition:
+	name=T10
+	src=S4
+	tgt=Exit
+	event=;xpath=html/body/table[2]/tbody/tr[2]/td[1]/form/a[6];click
+	cond=
+	action=logout=1;submit()

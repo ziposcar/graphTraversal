@@ -1,0 +1,12 @@
+samename
+reload
+login
+invite
+updatepersonalinfo1
+updatepersonalinfo2
+preference1
+preference2
+echo1
+echo2
+echo3
+sendmessage

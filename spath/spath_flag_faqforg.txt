@@ -1,0 +1,3 @@
+addnewtopic
+updatetopic
+updatepage
