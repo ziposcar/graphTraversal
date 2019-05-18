@@ -131,8 +131,8 @@ def seq_script(driver,tevent,pathT,induval):
 
 def seq_script_faqforg(driver,tevent,pathT,induval):
     infor = []
-    print "pathT\n", pathT
-    print "tevent\n", tevent
+    # print "pathT\n", pathT
+    # print "tevent\n"#, tevent
     for T in pathT:
         infor.append(tevent[T])
     # print "infor\n",infor
@@ -143,7 +143,7 @@ def seq_script_faqforg(driver,tevent,pathT,induval):
         # print "infor[info]",infor[info]
         T_info = infor[info]
         tt = pathT[info]
-        print " 处理 %s 迁移" % tt
+        # print " 处理 %s 迁移" % tt
         T_info = T_info.split(";")
         # print"T_info[0]", T_info[0]
         if T_info[0] =="" and T_info[2] == "click":
@@ -501,7 +501,7 @@ def seq_script_phpcss(driver,tevent,pathT,induval):
 
 
 def runcase(tevent, pathT, induval, t_index):
-    startTime = datetime.now()
+    # startTime = datetime.now()
     # 执行封装的函数
     driver = drivers[t_index]
     url = config.getUrl().format(t_index)
@@ -531,10 +531,10 @@ def runcase(tevent, pathT, induval, t_index):
     # case.loginForPhpCss(driver, "admin", "admin")
     # seq_script_phpcss(driver, tevent, pathT, induval)
     ###################################
-    endTime = datetime.now()
-    usertime = endTime - startTime
-    print 'endTime - startTime运行该测试用例用时:\t', endTime - startTime
-    recordFun.recordTestCaseRunTime(usertime)
+    # endTime = datetime.now()
+    # usertime = endTime - startTime
+    # print 'endTime - startTime运行该测试用例用时:\t', endTime - startTime
+    # recordFun.recordTestCaseRunTime(usertime)
 
 
 

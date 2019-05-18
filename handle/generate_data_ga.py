@@ -122,8 +122,8 @@ def testProcee(SM, currPathT, t_index):
     test_fit =[]
     if len(SM.originalDef) > 0:  ##There exist input variables on the path
         vecdata = Initial_data(pathVarType)  #为变量产生数据
-        print " 变量上的数据：",vecdata
-        print " 执行当前序列:"
+        # print " 变量上的数据：",vecdata
+        # print " 执行当前序列:"
         seq_to_script.runcase(SM.TEvent, currPathT, vecdata, t_index) # 执行当前序列
         test_fit,coverage = cal_data_fit.array_spath(t_index)  # 获取对各条路径的覆盖情况 test_fit，及完全覆盖路径的覆盖率
         data = vecdata

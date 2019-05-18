@@ -75,7 +75,7 @@ def gdata(seq,SM):
     i = 1
     at = async_task.AsyncTask()
     for t_index, path in enumerate(seq):
-        print " 第",i," 个测试用例", path, len(path)
+        # print " 第",i," 个测试用例", path, len(path)
         # 对每一条path 求数据，运行，评估个体数据
         at.add(generate_data_ga.testProcee, copy.deepcopy(SM), path, t_index)
         cal_data_fit.deletefile(t_index)
@@ -87,7 +87,7 @@ def gdata(seq,SM):
             M.append(mm)
         else:
             M.append(test_fit)
-        recordFun.recordTestCase(i,path,test_fit,coverage)
+        # recordFun.recordTestCase(i,path,test_fit,coverage)
         d.append(data_result)
         i += 1
     return d, M

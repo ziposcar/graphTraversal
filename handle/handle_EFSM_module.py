@@ -397,7 +397,7 @@ class EFSM(object):
             tempvdict.extend(vdict['eventVdef'])
             while tempvdict != []:
                 self.originalDef.append(tempvdict.pop(0))
-        print " 当前迁移上原始定义变量originaDef", self.originalDef
+        # print " 当前迁移上原始定义变量originaDef", self.originalDef
 
     def copyPathInfo(self):
         """
