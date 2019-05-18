@@ -9,37 +9,40 @@ from Levenshtein import *
 import math
 import os
 import datetime
+import redis
 import shutil
 import sensitive_path_info
 from decimal import Decimal
 import recordFun
 K = 1
 import config
-file,file2 = config.getInstrumentFile()
+file,file2,redis_path = config.getInstrumentFile()
 #schoolmate
 # file = "D:\\wamp_php\\wamp\\www\\schoolmate2\\b.txt"
 # file2 = "D:\\wamp_php\\wamp\\www\\schoolmate2\\bbb.txt"
 #faqforg
 file = "D:/WandS/Graduation_Project/webapp instrrument/2faqforge_new/b.txt"
 file2 = "D:/WandS/Graduation_Project/webapp instrrument/2faqforge_new/bbb.txt"
-def deletefile():
+
+r = redis.Redis(host="127.0.0.1", port=6379, db=0)
+
+def deletefile(t_index):
     if os.path.exists(file):
-        shutil.copyfile(file,file2)
-        os.remove(file)
+        # shutil.copyfile(file,file2)
+        # os.remove(file)
+        r.set(redis_path.format(t_index), "")
     else:
         print 'no such file:%s' % file
 
 
-def hand_instru():
+def hand_instru(t_index):
     result = []
     path_info = []
     path=[]
     branch_exe = []
     cond_data = []
     path_e = []
-    f = open(file, "r")
-    lines = f.readlines()  # 读取全部内容
-    f.close()
+    lines = r.get(redis_path.format(t_index)).split("\r\n")  # 读取全部内容
     for line in lines:
         line = line.strip("\n")
         if line != "*********" and line != "":
@@ -73,7 +76,7 @@ def hand_instru():
     # print "分支信息",ucond_data
     # print "分支执行信息",ubranch_exe
 
-    deletefile()
+    deletefile(t_index)
     bexcu_seq = []
     cinfo=[]
     pbdict = {}
@@ -115,8 +118,7 @@ def hand_instru_webchess():
     branch_exe = []
     cond_data = []
     path_e = []
-    f = open(file, "r")
-    lines = f.readlines()  # 读取全部内容
+    lines = r.get(redis_path.format(t_index)).split("\r\n")  # 读取全部内容
     f.close()
     for line in lines:
         line = line.strip("\n")
@@ -151,7 +153,7 @@ def hand_instru_webchess():
     # print "分支信息",ucond_data
     # print "分支执行信息",ubranch_exe
 
-    # deletefile()
+    # deletefile(t_index)
     bexcu_seq = []
     cinfo=[]
     pbdict = {}
@@ -299,8 +301,8 @@ def judge_new(pcdict,pbdict):  # 判断每条路径的fitness
 # 一行就是一个测试用例对所有路径的覆盖情况，一列就是多个测试用例对同一条路径的覆盖情况
 
 #array_spath 获取一个测试用例对所有路径的覆盖情况
-def array_spath():
-    pbdict, pcdict = hand_instru()  # schoolmate,faqforge
+def array_spath(t_index):
+    pbdict, pcdict = hand_instru(t_index)  # schoolmate,faqforge
     # pbdict, pcdict = hand_instru_webchess() #webchess
     path_fit = judge_new(pcdict, pbdict)
     spath = sensitive_path_info.obtain_spath()
@@ -326,7 +328,7 @@ if __name__=='__main__':
     # path_fit = judge_new(pcdict,pbdict)
     # array_spath()
     # hand_info(c,b)
-    # deletefile()
+    # deletefile(t_index)
     # l = [2, 2, 2, 0.0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
     #  0.0, 0.0, 2, 2, 2]
     # t = l.count(0.0)

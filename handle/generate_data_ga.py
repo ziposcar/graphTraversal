@@ -116,17 +116,17 @@ def Initial_data(vartype):
     return solve
 
 
-def testProcee(SM, currPathT):
+def testProcee(SM, currPathT, t_index):
     coverage = 0
     varname, pathVarType = obtain_var_from_path(SM, currPathT)  #获得序列上的变量名和变量类型
     test_fit =[]
     if len(SM.originalDef) > 0:  ##There exist input variables on the path
-            vecdata = Initial_data(pathVarType)  #为变量产生数据
-            print " 变量上的数据：",vecdata
-            print " 执行当前序列:"
-            seq_to_script.runcase(SM.TEvent, currPathT, vecdata) # 执行当前序列
-            test_fit,coverage = cal_data_fit.array_spath()  # 获取对各条路径的覆盖情况 test_fit，及完全覆盖路径的覆盖率
-            data = vecdata
+        vecdata = Initial_data(pathVarType)  #为变量产生数据
+        print " 变量上的数据：",vecdata
+        print " 执行当前序列:"
+        seq_to_script.runcase(SM.TEvent, currPathT, vecdata, t_index) # 执行当前序列
+        test_fit,coverage = cal_data_fit.array_spath(t_index)  # 获取对各条路径的覆盖情况 test_fit，及完全覆盖路径的覆盖率
+        data = vecdata
     else:
         print"The path has no variables"
         data = [0]

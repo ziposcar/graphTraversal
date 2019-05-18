@@ -1,5 +1,8 @@
 #encoding:utf-8
 from __future__ import division
+import async_task
+import cal_data_fit
+import copy
 import recordFun
 import generate_data_ga  #数据生成器-----序列上的变量产生数据
 import sensitive_path_info
@@ -70,10 +73,16 @@ def gdata(seq,SM):
     d = []
     M = []
     i = 1
-    for path in seq:
+    at = async_task.AsyncTask()
+    for t_index, path in enumerate(seq):
         print " 第",i," 个测试用例", path, len(path)
         # 对每一条path 求数据，运行，评估个体数据
-        data_result, test_fit, coverage = generate_data_ga.testProcee(SM, path)
+        at.add(generate_data_ga.testProcee, copy.deepcopy(SM), path, t_index)
+        cal_data_fit.deletefile(t_index)
+
+    results = at.run()
+    for data_result, test_fit, coverage in results:
+        # data_result, test_fit, coverage = generate_data_ga.testProcee(SM, path, t_index)
         if len(test_fit) == 0:  #构造覆盖矩阵M
             M.append(mm)
         else:

@@ -20,7 +20,8 @@ def dologin(driver, user, psw): # 登录，参数是用户名和密码  T3
 
 
 def doquit(driver):  # 退出火狐
-    driver.close()
+    # driver.close()
+    driver.delete_all_cookies()
 
 def T19(driver,object):
     driver.find_element_by_xpath(object).click()
