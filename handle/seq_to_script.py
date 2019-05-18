@@ -14,7 +14,7 @@ import time
 options = webdriver.FirefoxOptions()
 options.set_headless()
 # options.add_argument('-headless')
-options.add_argument('--disable-gpu')
+# options.add_argument('--disable-gpu')
 
 binary = FirefoxBinary("D:\\software\\firefox\\firefox.exe")
 # # 这里要指定火狐的位置，因为它不是默认位置，默认的是在C:\\Program Files（x86）\\Mozilla Firefox\\firefox.exe
