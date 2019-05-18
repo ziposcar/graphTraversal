@@ -9,23 +9,30 @@ from Levenshtein import *
 import math
 import os
 import datetime
+import redis
 import shutil
 import sensitive_path_info
 from decimal import Decimal
 import recordFun
 K = 1
 import config
-file,file2 = config.getInstrumentFile()
+file,file2,redis_path = config.getInstrumentFile()
 #schoolmate
 # file = "D:\\wamp_php\\wamp\\www\\schoolmate2\\b.txt"
 # file2 = "D:\\wamp_php\\wamp\\www\\schoolmate2\\bbb.txt"
 #faqforg
 file = "D:/WandS/Graduation_Project/webapp instrrument/2faqforge_new/b.txt"
 file2 = "D:/WandS/Graduation_Project/webapp instrrument/2faqforge_new/bbb.txt"
+
+r = redis.Redis(host="127.0.0.1", port=6379, db=0)
+
 def deletefile():
     if os.path.exists(file):
-        shutil.copyfile(file,file2)
-        os.remove(file)
+        # shutil.copyfile(file,file2)
+        # os.remove(file)
+        with open(file2, "w+") as f:
+            f.write(r.get(redis_path))
+        r.set(redis_path, "")
     else:
         print 'no such file:%s' % file
 
@@ -37,9 +44,7 @@ def hand_instru():
     branch_exe = []
     cond_data = []
     path_e = []
-    f = open(file, "r")
-    lines = f.readlines()  # 读取全部内容
-    f.close()
+    lines = r.get(redis_path).split("\r\n")  # 读取全部内容
     for line in lines:
         line = line.strip("\n")
         if line != "*********" and line != "":
@@ -115,8 +120,7 @@ def hand_instru_webchess():
     branch_exe = []
     cond_data = []
     path_e = []
-    f = open(file, "r")
-    lines = f.readlines()  # 读取全部内容
+    lines = r.get(redis_path).split("\r\n")  # 读取全部内容
     f.close()
     for line in lines:
         line = line.strip("\n")
@@ -151,7 +155,7 @@ def hand_instru_webchess():
     # print "分支信息",ucond_data
     # print "分支执行信息",ubranch_exe
 
-    # deletefile()
+    # deletefile(t_index)
     bexcu_seq = []
     cinfo=[]
     pbdict = {}

@@ -12,9 +12,9 @@ import config
 import time
 
 options = webdriver.FirefoxOptions()
-options.set_headless()
+# options.set_headless()
 # options.add_argument('-headless')
-options.add_argument('--disable-gpu')
+# options.add_argument('--disable-gpu')
 
 # 脚本库自动产生
 #3个参数：tevent所有迁移的event信息，pathT 当前迁移序列,针对变量产生的数据
