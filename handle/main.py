@@ -9,6 +9,7 @@ import obtain_efsm_info2    # 模型处理器
 import generate_seq_ga_check  # 序列生成器-----产生覆盖敏感路径的序列
 import execute
 import local_search_alg
+import seq_to_script
 import recordFun
 import config
 def main():
@@ -140,6 +141,7 @@ def main():
 
 if __name__ == '__main__':  # not execute when import as a module
     main()
+    seq_to_script.driver.quit()
     # table = []
     # print len(table)
     # t = [ 2, 0.0, 1.004950495049505, 0.0, 0.8544139861204133]

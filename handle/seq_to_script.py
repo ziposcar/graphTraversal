@@ -16,6 +16,11 @@ options.set_headless()
 # options.add_argument('-headless')
 options.add_argument('--disable-gpu')
 
+binary = FirefoxBinary("D:\\software\\firefox\\firefox.exe")
+# # 这里要指定火狐的位置，因为它不是默认位置，默认的是在C:\\Program Files（x86）\\Mozilla Firefox\\firefox.exe
+driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options)
+driver.implicitly_wait(30)
+
 # 脚本库自动产生
 #3个参数：tevent所有迁移的event信息，pathT 当前迁移序列,针对变量产生的数据
 def seq_script(driver,tevent,pathT,induval):
@@ -485,10 +490,6 @@ def seq_script_phpcss(driver,tevent,pathT,induval):
 
 def runcase(tevent, pathT, induval):
     startTime = datetime.now()
-    binary = FirefoxBinary("D:\\software\\firefox\\firefox.exe")
-    # # 这里要指定火狐的位置，因为它不是默认位置，默认的是在C:\\Program Files（x86）\\Mozilla Firefox\\firefox.exe
-    driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options)
-    driver.implicitly_wait(30)
     # 执行封装的函数
     url = config.getUrl()
     driver.get(url)

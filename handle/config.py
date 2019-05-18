@@ -20,11 +20,11 @@ def getModule():
 
 
 def getUrl():
-    # url = "http://localhost/schoolmate2/"  # schoolmate
-    url = "http://localhost/2faqforge_new/"  # faqforge
-    # url = "http://localhost/4webchess/"  #webchess
-    # url ="http://localhost/1addressbook/"  # addressbook
-    # url="http://localhost/phpaaCMS_0.5/admin/login.php" #phpCSS
+    # url = "http://127.0.0.1/schoolmate2/"  # schoolmate
+    url = "http://127.0.0.1/2faqforge_0/"  # faqforge
+    # url = "http://127.0.0.1/4webchess/"  #webchess
+    # url ="http://127.0.0.1/1addressbook/"  # addressbook
+    # url="http://127.0.0.1/phpaaCMS_0.5/admin/login.php" #phpCSS
     return url
 
 def getInstrumentFile():
@@ -35,6 +35,7 @@ def getInstrumentFile():
     # faqforg
     file = "D:\\WandS\\Graduation_Project\\webapp instrrument\\2faqforge_new\\b.txt"
     file2 = "D:\\WandS\\Graduation_Project\\webapp instrrument\\2faqforge_new\\bbb.txt"
+    redis_path = "2faqforge_0"
     # webchess
     # file = "D:\\WandS\\Graduation_Project\\webapp instrrument\\4webchess\\b.txt"
     # file2 = "D:\\WandS\\Graduation_Project\\webapp instrrument\\4webchess\\bbb.txt"
@@ -44,7 +45,7 @@ def getInstrumentFile():
 
     # file = "D:\\WandS\\Graduation_Project\\webapp instrrument\\phpaaCMS_0.5\\admin\\b.txt"
     # file2 = "D:\\WandS\\Graduation_Project\\webapp instrrument\\phpaaCMS_0.5\\admin\\bbb.txt"
-    return file, file2
+    return file, file2, redis_path
 
 def getRecordFundFile():
     filepath = "..\\dataset\\"  # schoolmate的
