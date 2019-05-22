@@ -14,7 +14,7 @@ import config
 def main():
 
     SM = obtain_efsm_info2.obtain_efsm()
-    popsize,pc,pm,Max = config.getPopParameter()
+    popsize,pc,pm,Max,_ = config.getPopParameter()
     startTime = datetime.now()
     pop = generate_seq_ga_check.initialpop_feasible(popsize, SM)
     ''' pop =[['T27', 'T28', 'T29', 'T90', 'T41', 'T42', 'T43', 'T44', 'T45', 'T91', 'T51', 'T52', 'T53', 'T92', 'T82'],
@@ -81,6 +81,7 @@ def main():
     print " 种群为： "
     for sub in pop:
         print sub
+    pop = sorted(pop, key=lambda sub: -len(sub))
     testdata, M = execute.gdata(pop, SM)  # 为序列产生数据，执行测试用例，获取评估矩阵M
     print " 通过M获得所有敏感路径入口点覆盖标识cover_flag及敏感路径完全覆盖标识flag"
     flag, cover_flag = execute.table_handle(M)

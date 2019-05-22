@@ -12,9 +12,11 @@ import config
 import time
 
 options = webdriver.FirefoxOptions()
+profile = webdriver.FirefoxProfile()
 options.set_headless()
 # options.add_argument('-headless')
 # options.add_argument('--disable-gpu')
+profile.set_preference("intl.accept_languages", "en-US");
 
 binary = FirefoxBinary("D:\\software\\firefox\\firefox.exe")
 # # 这里要指定火狐的位置，因为它不是默认位置，默认的是在C:\\Program Files（x86）\\Mozilla Firefox\\firefox.exe
@@ -28,8 +30,9 @@ class Drivers(list):
                 pass
 
 drivers = Drivers()
-for i in range(config.getPopParameter()[0]):
-    driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options)
+multi_process_count = config.getPopParameter()[4]
+for i in range(multi_process_count):
+    driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options, firefox_profile=profile)
     driver.implicitly_wait(30)
     drivers.append(driver)
 
@@ -500,10 +503,10 @@ def seq_script_phpcss(driver,tevent,pathT,induval):
     case.doquit(driver)
 
 
-def runcase(tevent, pathT, induval, t_index):
+def runcase(driver_index, tevent, pathT, induval, t_index):
     # startTime = datetime.now()
     # 执行封装的函数
-    driver = drivers[t_index]
+    driver = drivers[driver_index]
     url = config.getUrl().format(t_index)
     driver.get(url)
     ###################################
@@ -516,7 +519,7 @@ def runcase(tevent, pathT, induval, t_index):
     # seq_script_teacher(driver, tevent, pathT, induval)
     ###################################
     # faqforg程序不需要登录
-    seq_script_faqforg(driver,tevent,pathT,induval)
+    # seq_script_faqforg(driver,tevent,pathT,induval)
     ###################################
     ###################################
     # webchess程序
@@ -524,8 +527,8 @@ def runcase(tevent, pathT, induval, t_index):
     ###################################
     ###################################
     # addressbook程序需要登录
-    # case.login(driver, "admin", "123")
-    # seq_script_addressbook(driver,tevent,pathT,induval)
+    case.login(driver, "admin", "123")
+    seq_script_addressbook(driver,tevent,pathT,induval)
     ###################################
     # phpcss程序需要登录
     # case.loginForPhpCss(driver, "admin", "admin")

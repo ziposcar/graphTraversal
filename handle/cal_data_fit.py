@@ -17,22 +17,10 @@ import recordFun
 K = 1
 import config
 file,file2,redis_path = config.getInstrumentFile()
-#schoolmate
-# file = "D:\\wamp_php\\wamp\\www\\schoolmate2\\b.txt"
-# file2 = "D:\\wamp_php\\wamp\\www\\schoolmate2\\bbb.txt"
-#faqforg
-file = "D:/WandS/Graduation_Project/webapp instrrument/2faqforge_new/b.txt"
-file2 = "D:/WandS/Graduation_Project/webapp instrrument/2faqforge_new/bbb.txt"
-
 r = redis.Redis(host="127.0.0.1", port=6379, db=0)
 
 def deletefile(t_index):
-    if os.path.exists(file):
-        # shutil.copyfile(file,file2)
-        # os.remove(file)
-        r.set(redis_path.format(t_index), "")
-    else:
-        print 'no such file:%s' % file
+    r.set(redis_path.format(t_index), "")
 
 
 def hand_instru(t_index):
