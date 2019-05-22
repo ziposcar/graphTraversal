@@ -108,7 +108,6 @@ def hand_instru_webchess():
     cond_data = []
     path_e = []
     lines = r.get(redis_path).split("\r\n")  # 读取全部内容
-    f.close()
     for line in lines:
         line = line.strip("\n")
         if line != "*********" and line != "":
@@ -291,8 +290,8 @@ def judge_new(pcdict,pbdict):  # 判断每条路径的fitness
 
 #array_spath 获取一个测试用例对所有路径的覆盖情况
 def array_spath():
-    pbdict, pcdict = hand_instru()  # schoolmate,faqforge
-    # pbdict, pcdict = hand_instru_webchess() #webchess
+    # pbdict, pcdict = hand_instru()  # schoolmate,faqforge
+    pbdict, pcdict = hand_instru_webchess() #webchess
     path_fit = judge_new(pcdict, pbdict)
     spath = sensitive_path_info.obtain_spath()
     m = sensitive_path_info.build_m()
