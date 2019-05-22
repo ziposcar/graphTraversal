@@ -12,13 +12,15 @@ import config
 import time
 
 options = webdriver.FirefoxOptions()
-options.set_headless()
+profile = webdriver.FirefoxProfile()
+# options.set_headless()
 # options.add_argument('-headless')
-options.add_argument('--disable-gpu')
+# options.add_argument('--disable-gpu')
+profile.set_preference("intl.accept_languages", "en-US");
 
 binary = FirefoxBinary("D:\\software\\firefox\\firefox.exe")
 # # 这里要指定火狐的位置，因为它不是默认位置，默认的是在C:\\Program Files（x86）\\Mozilla Firefox\\firefox.exe
-driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options)
+driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options, firefox_profile=profile)
 driver.implicitly_wait(30)
 
 # 脚本库自动产生
@@ -325,7 +327,7 @@ def seq_script_addressbook(driver,tevent,pathT,induval):
         tt = pathT[info]
         print " 处理 %s 迁移" % tt
         T_info = T_info.split(";")
-        # print"T_info[0]", T_info[0]
+        print"T_info[0]", T_info[0]
         if T_info[0] =="" and T_info[2] == "click":
             temp = T_info[1].split("=")
             if temp[0] == "xpath": # 对象类型
@@ -503,7 +505,7 @@ def runcase(tevent, pathT, induval):
     # seq_script_teacher(driver, tevent, pathT, induval)
     ###################################
     # faqforg程序不需要登录
-    seq_script_faqforg(driver,tevent,pathT,induval)
+    # seq_script_faqforg(driver,tevent,pathT,induval)
     ###################################
     ###################################
     # webchess程序
@@ -511,8 +513,8 @@ def runcase(tevent, pathT, induval):
     ###################################
     ###################################
     # addressbook程序需要登录
-    # case.login(driver, "admin", "123")
-    # seq_script_addressbook(driver,tevent,pathT,induval)
+    case.login(driver, "admin", "123")
+    seq_script_addressbook(driver,tevent,pathT,induval)
     ###################################
     # phpcss程序需要登录
     # case.loginForPhpCss(driver, "admin", "admin")
