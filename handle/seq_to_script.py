@@ -503,10 +503,10 @@ def seq_script_phpcss(driver,tevent,pathT,induval):
     case.doquit(driver)
 
 
-def runcase(tevent, pathT, induval, t_index):
+def runcase(driver_index, tevent, pathT, induval, t_index):
     # startTime = datetime.now()
     # 执行封装的函数
-    driver = drivers[t_index % multi_process_count]
+    driver = drivers[driver_index]
     url = config.getUrl().format(t_index)
     driver.get(url)
     ###################################

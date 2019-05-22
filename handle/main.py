@@ -81,6 +81,7 @@ def main():
     print " 种群为： "
     for sub in pop:
         print sub
+    pop = sorted(pop, key=lambda sub: -len(sub))
     testdata, M = execute.gdata(pop, SM)  # 为序列产生数据，执行测试用例，获取评估矩阵M
     print " 通过M获得所有敏感路径入口点覆盖标识cover_flag及敏感路径完全覆盖标识flag"
     flag, cover_flag = execute.table_handle(M)
