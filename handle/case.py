@@ -407,12 +407,12 @@ def webchess_T17(driver,p1,p2,p3,p4,p5,v1,v2,v3,v4,v5,click_object):
 
 #addressbook的登录
 def login(driver, user, psw): # 登录，参数是用户名和密码  T3
-    driver.find_element_by_name("db_user").clear()
-    driver.find_element_by_name("db_user").send_keys(user)
+    driver.find_element_by_name("user").clear()
+    driver.find_element_by_name("user").send_keys(user)
     # element is hidden ,must execute js to obtain
     # driver.execute_script("document.getElementById('input-login-password').style.display='block';")
-    driver.find_element_by_name("db_pass").clear()
-    driver.find_element_by_name("db_pass").send_keys(psw)
+    driver.find_element_by_name("pass").clear()
+    driver.find_element_by_name("pass").send_keys(psw)
     driver.find_element_by_xpath("/html/body/div/div[4]/form/input[3]").click()
 
 
@@ -421,7 +421,7 @@ def addressbook_Ninput(driver,t,induval,j,click_object):
     for i in range(len(t)):
         if t[i] == "photo":   #上传文件
             driver.find_element_by_name("photo").clear()
-            driver.find_element_by_name("photo").send_keys("E:\\pycharm\\graphTraversal\\support\\upload.csv")
+            driver.find_element_by_name("photo").send_keys("d:\\test\\upload.jpg")
         elif t[i] in sp:
             Select(driver.find_element_by_name(t[i])).select_by_index(4)
         else:
@@ -432,7 +432,7 @@ def addressbook_Ninput(driver,t,induval,j,click_object):
 
 def upaload(driver,p1,click_object):#上传操作
     driver.find_element_by_id(p1).clear()
-    driver.find_element_by_id(p1).send_keys("E:\\pycharm\\graphTraversal\\support\\upload.csv")
+    driver.find_element_by_id(p1).send_keys("d:\\test\\upload.jpg")
     driver.find_element_by_name(click_object).click()
 
 
