@@ -13,9 +13,9 @@ import time
 
 options = webdriver.FirefoxOptions()
 profile = webdriver.FirefoxProfile()
-# options.set_headless()
+options.set_headless()
 # options.add_argument('-headless')
-# options.add_argument('--disable-gpu')
+options.add_argument('--disable-gpu')
 profile.set_preference("intl.accept_languages", "en-US");
 
 binary = FirefoxBinary("D:\\software\\firefox\\firefox.exe")
