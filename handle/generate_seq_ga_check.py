@@ -80,7 +80,7 @@ def is_feasible(currpath):  # 可行性判断
     conflictTran = {}
     # conflictTran["T5"] = ["T11", "T16", "T20", "T22"]
     # conflictTran["T6"] = ["T12", "T15", "T19", "T21"]
-    # conflictTran["T3"] = ["T6","T23"] #webchess
+    conflictTran["T3"] = ["T6","T23"] #webchess
     # conflictTran["T3"] = [1]
     tempPath = currpath[:]
     while tempPath:

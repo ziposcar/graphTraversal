@@ -12,8 +12,6 @@ class AsyncTask:
         self.free_drivers = [i for i in range(self.multi_process_count)]
 
     def add(self, func, *args, **kwargs):
-        _thread = threading.Thread(target=self.task_fun, args=args, kwargs=kwargs)
-        _thread.setDaemon(True)
         self.results.append(None)
         self.funcs.append(func)
         self.argss.append(list(args))
