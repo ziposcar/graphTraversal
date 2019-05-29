@@ -523,7 +523,7 @@ def runcase(driver_index, tevent, pathT, induval, t_index):
     ###################################
     ###################################
     # webchess程序
-    seq_script_webchess(driver,tevent,pathT,induval)
+    # seq_script_webchess(driver,tevent,pathT,induval)
     ###################################
     ###################################
     # addressbook程序需要登录
@@ -531,8 +531,8 @@ def runcase(driver_index, tevent, pathT, induval, t_index):
     # seq_script_addressbook(driver,tevent,pathT,induval)
     ###################################
     # phpcss程序需要登录
-    # case.loginForPhpCss(driver, "admin", "admin")
-    # seq_script_phpcss(driver, tevent, pathT, induval)
+    case.loginForPhpCss(driver, "admin", "admin")
+    seq_script_phpcss(driver, tevent, pathT, induval)
     ###################################
     # endTime = datetime.now()
     # usertime = endTime - startTime
