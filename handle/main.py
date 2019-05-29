@@ -81,18 +81,6 @@ def main():
     print " 种群为： "
     for sub in pop:
         print sub
-    with open("d:\\test\\phpaaCMS\\pop.txt") as f:
-        popsf = f.read()
-    import copy
-    pops = [[sub.replace("['", "").replace("']", "").split("', '") for sub in poptext.split("\n")[1:]] for poptext in popsf.split("=====================================\n")[:-1]]
-    for pop in pops:
-        pop = sorted(pop, key=lambda sub: -len(sub))
-        st = datetime.now()
-        testdata, M = execute.gdata(pop, copy.deepcopy(SM))
-        et = datetime.now()
-        with open("d:\\test\\phpaaCMS\\multi_process.dat", "a+") as f:
-            f.write("{}\n".format((et-st).total_seconds()))
-    return
     pop = sorted(pop, key=lambda sub: -len(sub))
     testdata, M = execute.gdata(pop, SM)  # 为序列产生数据，执行测试用例，获取评估矩阵M
     print " 通过M获得所有敏感路径入口点覆盖标识cover_flag及敏感路径完全覆盖标识flag"
