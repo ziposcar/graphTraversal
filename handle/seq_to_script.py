@@ -480,6 +480,7 @@ def seq_script_phpcss(driver,tevent,pathT,induval):
                 driver.switch_to_frame("mainFrame")
                 case.php_name_eight(driver,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],induval[j-8],
                                     induval[j-7],induval[j-6],induval[j-5],induval[j-4],induval[j-3],induval[j-2],induval[j - 1], temp[1])
+                print induval
                 driver.switch_to.default_content()
                 # driver.implicitly_wait(10)
         elif T_info[0] != "" and T_info[2] == "upload":
@@ -491,10 +492,10 @@ def seq_script_phpcss(driver,tevent,pathT,induval):
             if temp[0] == "name" and len(t) == 1:
                 driver.switch_to_frame("mainFrame")
                 if tt=="T62": #数据恢复
-                    url = "E:\\pycharm\\graphTraversal\\support\\20180921_all.sql"
+                    url = "D:\\WandS\\Graduation_Project\\graphTraversal-submit\\support\\20180921_all.sql"
                     case.T62(driver)
                 else:
-                    url="E:\\pycharm\\graphTraversal\\support\\888.png" #上传
+                    url="D:\\WandS\\Graduation_Project\\graphTraversal-submit\\support\\888.png" #上传
                 case.php_upload(driver, t[0], url, temp[1])
                 driver.switch_to.default_content()
 

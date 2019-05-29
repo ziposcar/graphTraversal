@@ -517,7 +517,7 @@ def php_name_eight(driver,p1,p2,p3,p4,p5,p6,p7,p8,v1,v2,v3,v4,v5,v6,v7,v8,click_
     driver.find_element_by_name(p2).send_keys(v2)
     #上传文件
     driver.find_element_by_id(p3).clear()
-    driver.find_element_by_id(p3).send_keys("E:\\pycharm\\graphTraversal\\support\\888.png")
+    driver.find_element_by_id(p3).send_keys("D:\\WandS\\Graduation_Project\\graphTraversal-submit\\support\\888.png")
 
     driver.find_element_by_name(p4).clear()
     driver.find_element_by_name(p4).send_keys(v4)
