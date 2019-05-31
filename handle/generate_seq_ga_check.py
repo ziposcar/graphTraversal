@@ -80,23 +80,23 @@ def is_feasible(currpath):  # 可行性判断
     conflictTran = {}
     # conflictTran["T5"] = ["T11", "T16", "T20", "T22"]
     # conflictTran["T6"] = ["T12", "T15", "T19", "T21"]
-    conflictTran["T3"] = ["T6","T23"] #webchess
+    # conflictTran["T3"] = ["T6","T23"] #webchess
     # conflictTran["T3"] = [1]
-    tempPath = currpath[:]
-    while tempPath:
-        firstTran = tempPath[0]
-        restTranList = tempPath[1:]
-        if firstTran in conflictTran.keys():
-            for tran in restTranList:
-                if tran in conflictTran[firstTran]:
-                    return False
-        tempPath = restTranList
-    return True
-    #schoolmate
-    # if "T24" in currpath:
-    #     return False
-    # else:
-    #     return True
+    # tempPath = currpath[:]
+    # while tempPath:
+    #     firstTran = tempPath[0]
+    #     restTranList = tempPath[1:]
+    #     if firstTran in conflictTran.keys():
+    #         for tran in restTranList:
+    #             if tran in conflictTran[firstTran]:
+    #                 return False
+    #     tempPath = restTranList
+    # return True
+    # schoolmate
+    if "T24" in currpath:
+        return False
+    else:
+        return True
 
 
 def del_infeasible_after_mutant(pop):
@@ -170,9 +170,9 @@ def chromsome(SM):  # 个体=a path，对path的长度、重复迁移个数进�
         timeslist = Counter(p).values()  # 每个重复出现的迁移的出现次数
         maxtimes = max(timeslist)
         # if len(p) < 17 and len(p) > 2 and maxtimes < 3 and "T22" not in p and "T33"not in p and "T38" not in p and "T37" not in p:  #phpcss
-        if len(p) < 17 and len(p) > 2 and maxtimes < 3 and "T11" not in p:  #addressbook
+        # if len(p) < 17 and len(p) > 2 and maxtimes < 3 and "T11" not in p:  #addressbook
         # if len(p) < 17 and len(p) > 2 and maxtimes < 3 and "T25" not in p:   #teacher
-        # if len(p) < 17 and len(p) > 2 and maxtimes < 3 : # 这里的限定需要再做考虑！！schoolmate（2-17）
+        if len(p) < 17 and len(p) > 2 and maxtimes < 3 : # 这里的限定需要再做考虑！！schoolmate（2-17）
         # if len(p) < 17 and len(p) > 2 and maxtimes < 3 and "T9" not in p:  # 这里的限定需要再做考虑！！
            #T9是为faqfore限定的
             break

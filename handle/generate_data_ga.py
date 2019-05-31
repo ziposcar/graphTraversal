@@ -25,7 +25,8 @@ def obtain_var_from_path(SM, currPathT):
     for num in varname:
         if num =="txtReload" or num in sp or num in sp1:
             pathVarType2.append('int')
-        elif num == "duedate" or num == "assigneddate" or num == "gradedate" or num == "wasdate":
+        elif "date" in num:
+        # elif num == "duedate" or num == "assigneddate" or num == "gradedate" or num == "wasdate" or num == "startdate" or num == "enddate":
             pathVarType2.append('date')
         elif num in sp2:
             pathVarType2.append('month')
@@ -33,6 +34,7 @@ def obtain_var_from_path(SM, currPathT):
             pathVarType2.append('day')
         else:
             pathVarType2.append('string')
+        print num, pathVarType2[-1]
     return varname, pathVarType2
 
 def GenerateRandomString():

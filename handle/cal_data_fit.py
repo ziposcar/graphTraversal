@@ -64,7 +64,7 @@ def hand_instru(t_index):
     # print "分支信息",ucond_data
     # print "分支执行信息",ubranch_exe
 
-    deletefile(t_index)
+    # deletefile(t_index)
     bexcu_seq = []
     cinfo=[]
     pbdict = {}
@@ -289,8 +289,8 @@ def judge_new(pcdict,pbdict):  # 判断每条路径的fitness
 
 #array_spath 获取一个测试用例对所有路径的覆盖情况
 def array_spath(t_index):
-    # pbdict, pcdict = hand_instru(t_index)  # schoolmate,faqforge
-    pbdict, pcdict = hand_instru_webchess(t_index) #webchess
+    pbdict, pcdict = hand_instru(t_index)  # schoolmate,faqforge
+    # pbdict, pcdict = hand_instru_webchess(t_index) #webchess
     path_fit = judge_new(pcdict, pbdict)
     spath = sensitive_path_info.obtain_spath()
     m = sensitive_path_info.build_m()

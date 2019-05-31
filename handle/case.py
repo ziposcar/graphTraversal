@@ -72,6 +72,8 @@ def click_event_input_three(driver,p1,p2,p3,v1,v2,v3,click_object):
     driver.find_element_by_name(p1).send_keys(v1)
     driver.find_element_by_name(p2).clear()
     driver.find_element_by_name(p2).send_keys(v2)
+    if "date" in p3:
+        driver.find_element_by_name(p3).clear()
     driver.find_element_by_name(p3).send_keys(v3)
     driver.find_element_by_xpath(click_object).click()
 

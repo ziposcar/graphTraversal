@@ -13,7 +13,7 @@ import time
 
 options = webdriver.FirefoxOptions()
 profile = webdriver.FirefoxProfile()
-options.set_headless()
+# options.set_headless()
 # options.add_argument('-headless')
 # options.add_argument('--disable-gpu')
 profile.set_preference("intl.accept_languages", "en-US");
@@ -511,8 +511,8 @@ def runcase(driver_index, tevent, pathT, induval, t_index):
     driver.get(url)
     ###################################
     # schoolmate程序需要确保是正确登录状态直接将个体所谓前两个参数设为test，1,使关于用户名密码的统统人为化，以便得以进入系统
-    # case.dologin(driver, "test", "1")   #schoolmate程序的登录
-    # seq_script(driver, tevent, pathT, induval)
+    case.dologin(driver, "test", "test")   #schoolmate程序的登录
+    seq_script(driver, tevent, pathT, induval)
     ###################################
     # schoolmate程序需要确保是正确登录状态直接将个体所谓前两个参数设为test，1,使关于用户名密码的统统人为化，以便得以进入系统
     # case.dologin(driver, "t", "1")   #schoolmate程序的teacher身份登录
@@ -523,7 +523,7 @@ def runcase(driver_index, tevent, pathT, induval, t_index):
     ###################################
     ###################################
     # webchess程序
-    seq_script_webchess(driver,tevent,pathT,induval)
+    # seq_script_webchess(driver,tevent,pathT,induval)
     ###################################
     ###################################
     # addressbook程序需要登录
