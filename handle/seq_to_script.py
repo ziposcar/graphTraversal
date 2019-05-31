@@ -33,7 +33,7 @@ drivers = Drivers()
 multi_process_count = config.getPopParameter()[4]
 for i in range(multi_process_count):
     driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options, firefox_profile=profile)
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     drivers.append(driver)
 
 # 脚本库自动产生
@@ -49,86 +49,95 @@ def seq_script(driver,tevent,pathT,induval):
     # print "pathT",pathT
     # print "info",infor
     for info in range(len(infor)):
-        # print "infor[info]",infor[info]
-        T_info = infor[info]
-        tt = pathT[info]
-        print " 处理 %s 迁移" % tt
-        T_info = T_info.split(";")
-        # print T_info
-        if T_info[0] =="" and T_info[2] == "click":
-            # 属于没有输入变量的click事件,call click()
-            temp = T_info[1].split("=")
-            if temp[0] == "xpath": # 对象类型
-                if tt == "T19":
-                    case.T19(driver,temp[1])
-                elif tt == "T24":
-                    case.T24(driver,temp[1])
-                else:
-                    case.click_event_xpath(driver, temp[1])
-            elif temp[0] == "css":
-                case.click_event_css(driver,temp[1])
-            elif temp[0] == "link text":
-                if tt == "T23":  #t33
-                    case.click_event_links(driver)
-                    case.click_event_links(driver)
-                else:
-                    case.click_link(driver)
-            elif temp[0] == "name":
-                case.click_event_name(driver,temp[1])
-            elif temp[0] == "id":
-                case.click_event_id(driver,temp[1])
-        elif T_info[0] != "" and T_info[2] == "click":
-            # 属于有输入变量的click事件,call click_event_input()
-            t = re.findall('[^()]+', T_info[0])[1]  # 提取输入变量
-            t = t.split(",")
-            # print "迁移上变量：",t
-            j = j + len(t)
-            temp = T_info[1].split("=")
-            if temp[0] == "xpath" and len(t) == 1:  #最好click对象都是xpath的，看t的长度知道有几个参数，从而调用哪个脚本
-                case.click_event_input_one(driver,t[0],induval[j-1],temp[1])
-            elif temp[0] == "xpath" and len(t) == 2:
-                case.click_event_input_two(driver,t[0],t[1],induval[j-2],induval[j-1],temp[1])
-            elif temp[0] == "xpath" and len(t) == 3:
-                case.click_event_input_three(driver, t[0], t[1],t[2],induval[j - 3], induval[j - 2], induval[j - 1], temp[1])
-            elif temp[0] == "xpath" and len(t) == 4:
-                if tt == "T29" or tt == "T37": #T44, T52要求密码相同
-                    case.click_event_input_four_add(driver, t[0], t[1], t[2], t[3], induval[j - 4], induval[j - 2],
-                                                induval[j - 2], induval[j - 1],
-                                                temp[1])
-                elif tt == "T61" or tt == "T66":
-                    case.click_event_input_four_parent(driver, t[0], t[1], t[2],t[3],induval[j - 4], induval[j - 3], induval[j - 2], induval[j - 1],
-                                             temp[1])
-                else:
-                    case.click_event_input_four(driver, t[0], t[1], t[2],t[3],induval[j - 4], induval[j - 3], induval[j - 2], induval[j - 1],
-                                             temp[1])
-            elif temp[0] == "xpath" and len(t) == 5:
-                case.click_event_input_five(driver, t[0], t[1], t[2], t[3],t[4],induval[j - 5], induval[j - 4], induval[j - 3],
-                                            induval[j - 2], induval[j - 1],temp[1])
-            elif temp[0] == "xpath" and len(t) == 6:
-                case.click_event_input_six(driver, t[0], t[1], t[2], t[3], t[4],t[5],induval[j - 6], induval[j - 5], induval[j - 4],
-                                            induval[j - 3],induval[j - 2], induval[j - 1], temp[1])
-            elif temp[0] == "xpath" and len(t) == 7:
-                case.click_event_input_sevent(driver,t[0], t[1], t[2], t[3], t[4],t[5],t[6],induval[j - 7],
-                                              induval[j - 6], induval[j - 5], induval[j - 4],
-                                            induval[j - 3],induval[j - 2], induval[j - 1], temp[1])
-            elif temp[0] == "xpath" and len(t) == 12:
-                case.click_event_input_12(driver,t[0], t[1], t[2], t[3], t[4],t[5],t[6],t[7], t[8], t[9], t[10], t[11],
-                                          induval[j - 12],induval[j - 11],induval[j - 10],induval[j - 9],induval[j - 8],
-                                          induval[j - 7],induval[j - 6], induval[j - 5], induval[j - 4],
-                                            induval[j - 3],induval[j - 2], induval[j - 1], temp[1])
-            # 后续补
-        elif T_info[0] != "" and T_info[2] == "down_click": #事件类型，下拉列表
-            t = re.findall('[^()]+', T_info[0])[1]  # 提取输入变量
-            t = t.split(",")
-            # print "迁移上变量：", t
-            j = j + len(t)
-            temp = T_info[1].split("=")
-            if temp[0] == "xpath" and len(t) == 2:  # 最好click对象都是xpath的，看t的长度知道有几个参数，从而调用哪个脚本
-                case.down_click_two(driver, t[0],t[1],temp[1])
-            elif temp[0] == "xpath" and len(t) == 3:  # 最好click对象都是xpath的，看t的长度知道有几个参数，从而调用哪个脚本
-                case.down_click_three(driver, t[0],t[1],t[2],temp[1])
+        while True:
+            try:
+                # print "infor[info]",infor[info]
+                T_info = infor[info]
+                tt = pathT[info]
+                print " 处理 %s 迁移" % tt
+                T_info = T_info.split(";")
+                # print T_info
+                if T_info[0] =="" and T_info[2] == "click":
+                    # 属于没有输入变量的click事件,call click()
+                    temp = T_info[1].split("=")
+                    if temp[0] == "xpath": # 对象类型
+                        if tt == "T19":
+                            case.T19(driver,temp[1])
+                        elif tt == "T24":
+                            case.T24(driver,temp[1])
+                        else:
+                            case.click_event_xpath(driver, temp[1])
+                    elif temp[0] == "css":
+                        case.click_event_css(driver,temp[1])
+                    elif temp[0] == "link text":
+                        if tt == "T23":  #t33
+                            case.click_event_links(driver)
+                            # case.click_event_links(driver)
+                        else:
+                            case.click_link(driver)
+                    elif temp[0] == "name":
+                        case.click_event_name(driver,temp[1])
+                    elif temp[0] == "id":
+                        case.click_event_id(driver,temp[1])
+                elif T_info[0] != "" and T_info[2] == "click":
+                    # 属于有输入变量的click事件,call click_event_input()
+                    t = re.findall('[^()]+', T_info[0])[1]  # 提取输入变量
+                    t = t.split(",")
+                    # print "迁移上变量：",t
+                    j = j + len(t)
+                    temp = T_info[1].split("=")
+                    if temp[0] == "xpath" and len(t) == 1:  #最好click对象都是xpath的，看t的长度知道有几个参数，从而调用哪个脚本
+                        case.click_event_input_one(driver,t[0],induval[j-1],temp[1])
+                    elif temp[0] == "xpath" and len(t) == 2:
+                        case.click_event_input_two(driver,t[0],t[1],induval[j-2],induval[j-1],temp[1])
+                    elif temp[0] == "xpath" and len(t) == 3:
+                        case.click_event_input_three(driver, t[0], t[1],t[2],induval[j - 3], induval[j - 2], induval[j - 1], temp[1])
+                    elif temp[0] == "xpath" and len(t) == 4:
+                        if tt == "T29" or tt == "T37": #T44, T52要求密码相同
+                            case.click_event_input_four_add(driver, t[0], t[1], t[2], t[3], induval[j - 4], induval[j - 2],
+                                                        induval[j - 2], induval[j - 1],
+                                                        temp[1])
+                        elif tt == "T61" or tt == "T66":
+                            case.click_event_input_four_parent(driver, t[0], t[1], t[2],t[3],induval[j - 4], induval[j - 3], induval[j - 2], induval[j - 1],
+                                                    temp[1])
+                        else:
+                            case.click_event_input_four(driver, t[0], t[1], t[2],t[3],induval[j - 4], induval[j - 3], induval[j - 2], induval[j - 1],
+                                                    temp[1])
+                    elif temp[0] == "xpath" and len(t) == 5:
+                        case.click_event_input_five(driver, t[0], t[1], t[2], t[3],t[4],induval[j - 5], induval[j - 4], induval[j - 3],
+                                                    induval[j - 2], induval[j - 1],temp[1])
+                    elif temp[0] == "xpath" and len(t) == 6:
+                        case.click_event_input_six(driver, t[0], t[1], t[2], t[3], t[4],t[5],induval[j - 6], induval[j - 5], induval[j - 4],
+                                                    induval[j - 3],induval[j - 2], induval[j - 1], temp[1])
+                    elif temp[0] == "xpath" and len(t) == 7:
+                        case.click_event_input_sevent(driver,t[0], t[1], t[2], t[3], t[4],t[5],t[6],induval[j - 7],
+                                                    induval[j - 6], induval[j - 5], induval[j - 4],
+                                                    induval[j - 3],induval[j - 2], induval[j - 1], temp[1])
+                    elif temp[0] == "xpath" and len(t) == 12:
+                        case.click_event_input_12(driver,t[0], t[1], t[2], t[3], t[4],t[5],t[6],t[7], t[8], t[9], t[10], t[11],
+                                                induval[j - 12],induval[j - 11],induval[j - 10],induval[j - 9],induval[j - 8],
+                                                induval[j - 7],induval[j - 6], induval[j - 5], induval[j - 4],
+                                                    induval[j - 3],induval[j - 2], induval[j - 1], temp[1])
+                    # 后续补
+                elif T_info[0] != "" and T_info[2] == "down_click": #事件类型，下拉列表
+                    t = re.findall('[^()]+', T_info[0])[1]  # 提取输入变量
+                    t = t.split(",")
+                    # print "迁移上变量：", t
+                    j = j + len(t)
+                    temp = T_info[1].split("=")
+                    if temp[0] == "xpath" and len(t) == 2:  # 最好click对象都是xpath的，看t的长度知道有几个参数，从而调用哪个脚本
+                        case.down_click_two(driver, t[0],t[1],temp[1])
+                    elif temp[0] == "xpath" and len(t) == 3:  # 最好click对象都是xpath的，看t的长度知道有几个参数，从而调用哪个脚本
+                        case.down_click_three(driver, t[0],t[1],t[2],temp[1])
 
-            # print "后续补充扩展"
+                    # print "后续补充扩展"
+                break
+            except:
+                if len(driver.find_elements_by_name("username")) != 0:
+                    case.dologin(driver, "test", "test")
+                else:
+                    raise Exception("no username and except!!!!!!!!-+*/")
+
     case.doquit(driver)
 
 

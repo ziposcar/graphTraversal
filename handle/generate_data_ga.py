@@ -3,7 +3,6 @@ import obtain_efsm_info2
 import random
 import seq_to_script
 import cal_data_fit
-import datetime
 
 
 def obtain_var_from_path(SM, currPathT):
@@ -32,6 +31,8 @@ def obtain_var_from_path(SM, currPathT):
             pathVarType2.append('month')
         elif num in sp1:
             pathVarType2.append('day')
+        elif num in ['sectionnum','roomnum','periodnum']:
+            pathVarType2.append('num')
         else:
             pathVarType2.append('string')
         print num, pathVarType2[-1]
@@ -64,11 +65,17 @@ def GenerateRandomString():
 def GenerateRandomInt():
     ret = random.choice(range(0,8000))
     return ret
+
+def GenerateRandomNum():
+    ret = random.choice(range(1,10))
+    return ret
+
 def GenerateRandomdate():
     # 创建日期辅助表
     datestart = '2018-01-01'
     dateend = '2021-12-30'
     # 转为日期格式
+    import datetime
     datestart = datetime.datetime.strptime(datestart, '%Y-%m-%d')
     dateend = datetime.datetime.strptime(dateend, '%Y-%m-%d')
     date_list = []
@@ -112,6 +119,8 @@ def Initial_data(vartype):
         elif num == 'month':
             str = GenerateRandomMonth()
             solve.append(str)
+        elif num == 'num':
+            solve.append(GenerateRandomNum())
         else:
             str1 = GenerateRandomInt()
             solve.append(str1)

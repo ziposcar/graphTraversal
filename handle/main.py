@@ -77,11 +77,20 @@ def main():
     #        ['T5', 'T67', 'T37', 'T38', 'T37', 'T39'],
     #      ]
     strf = " 初始种群"
-    recordFun.recordInitalPop(strf,pop)
+    # recordFun.recordInitalPop(strf,pop)
     print " 种群为： "
-    for sub in pop:
-        print sub
+    with open("D:\\WandS\\Graduation_Project\\graphTraversal-submit\\dataset\\pop.txt") as f:
+        popsf = f.read()
+    import copy
+    pops = [[sub.replace("['", "").replace("']", "").split("', '") for sub in poptext.split("\n")[1:]] for poptext in popsf.split("=====================================\n")[:-1]]
+    pop = pops[-1]
     pop = sorted(pop, key=lambda sub: -len(sub))
+    new_pop = []
+    for sub in pop:
+        if sub:
+            new_pop.append(sub)
+            print sub
+    pop = new_pop
     testdata, M = execute.gdata(pop, SM)  # 为序列产生数据，执行测试用例，获取评估矩阵M
     print " 通过M获得所有敏感路径入口点覆盖标识cover_flag及敏感路径完全覆盖标识flag"
     flag, cover_flag = execute.table_handle(M)

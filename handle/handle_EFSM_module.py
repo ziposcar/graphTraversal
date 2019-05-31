@@ -389,7 +389,7 @@ class EFSM(object):
                         tempvdict.extend(vdict['eventVdef'])
                         while tempvdict != []:
                             self.originalDef.append(tempvdict.pop(0))
-                        tranDealFlag[currTrans] = 1
+                        # tranDealFlag[currTrans] = 1
                         break
             i = i + 1
         for vtran, vdict in self.repeatTranVarDict.iteritems():

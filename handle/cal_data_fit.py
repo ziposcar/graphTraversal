@@ -30,11 +30,15 @@ def hand_instru(t_index):
     branch_exe = []
     cond_data = []
     path_e = []
-    lines = r.get(redis_path.format(t_index)).split("\r\n")  # 读取全部内容
-    for line in lines:
-        line = line.strip("\n")
-        if line != "*********" and line != "":
-           result.append(line)
+    while result == [] or len(result) % 4:
+        lines = r.get(redis_path.format(t_index)).split("\r\n")  # 读取全部内容
+        if lines == "":
+            break
+        result = []
+        for line in lines:
+            line = line.strip("\n")
+            if line != "*********" and line != "":
+                result.append(line)
     # print result
     # print"changdu ", len(result)
     # for i in range(len(result)):
@@ -51,7 +55,10 @@ def hand_instru(t_index):
         path_e.append(result[i+1])
         # print"pathlong", path_e,len(path_e)
         cond_data.append(result[i+2])
-        branch_exe.append(result[i+3])
+        try:
+            branch_exe.append(result[i+3])
+        except:
+            raise Exception("++++++{}\r\n{}\r\n{}".format(t_index, lines, result))
     upath_info = []
     ucond_data = []
     ubranch_exe = []

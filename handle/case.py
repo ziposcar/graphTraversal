@@ -173,35 +173,48 @@ def click_event_input_five_faq(driver,p1,p2,p3,p4,p5,v1,v2,v3,v4,v5,click_object
     driver.find_element_by_xpath(click_object).click()
 
 def click_event_input_six(driver,p1,p2,p3,p4,p5,p6,v1,v2,v3,v4,v5,v6,click_object):
-    # driver.find_element_by_name(p1).clear()
+    if "date" in p1:
+        driver.find_element_by_name(p1).clear()
     driver.find_element_by_name(p1).send_keys(v1)
-    # driver.find_element_by_name(p2).clear()
+    if "date" in p2:
+        driver.find_element_by_name(p2).clear()
     driver.find_element_by_name(p2).send_keys(v2)
-    # driver.find_element_by_name(p3).clear()
+    if "date" in p3:
+        driver.find_element_by_name(p3).clear()
     driver.find_element_by_name(p3).send_keys(v3)
-    # driver.find_element_by_name(p4).clear()
+    if "date" in p4:
+        driver.find_element_by_name(p4).clear()
     driver.find_element_by_name(p4).send_keys(v4)
-    # driver.find_element_by_name(p5).clear()
+    if "date" in p5:
+        driver.find_element_by_name(p5).clear()
     driver.find_element_by_name(p5).send_keys(v5)
-    # driver.find_element_by_name(p6).clear()
+    if "date" in p6:
+        driver.find_element_by_name(p6).clear()
     driver.find_element_by_name(p6).send_keys(v6)
     driver.find_element_by_xpath(click_object).click()
 
 
 def click_event_input_sevent(driver,p1,p2,p3,p4,p5,p6,p7,v1,v2,v3,v4,v5,v6,v7,click_object):
-    # driver.find_element_by_name(p1).clear()
+    if "date" in p1:
+        driver.find_element_by_name(p1).clear()
     driver.find_element_by_name(p1).send_keys(v1)
-    # driver.find_element_by_name(p2).clear()
+    if "date" in p2:
+        driver.find_element_by_name(p2).clear()
     driver.find_element_by_name(p2).send_keys(v2)
-    # driver.find_element_by_name(p3).clear()
+    if "date" in p3:
+        driver.find_element_by_name(p3).clear()
     driver.find_element_by_name(p3).send_keys(v3)
-    # driver.find_element_by_name(p4).clear()
+    if "date" in p4:
+        driver.find_element_by_name(p4).clear()
     driver.find_element_by_name(p4).send_keys(v4)
-    # driver.find_element_by_name(p5).clear()
+    if "date" in p5:
+        driver.find_element_by_name(p5).clear()
     driver.find_element_by_name(p5).send_keys(v5)
-    # driver.find_element_by_name(p6).clear()
+    if "date" in p6:
+        driver.find_element_by_name(p6).clear()
     driver.find_element_by_name(p6).send_keys(v6)
-    driver.find_element_by_name(p7).send_keys(v7)
+    if "date" in p7:
+        driver.find_element_by_name(p7).send_keys(v7)
     driver.find_element_by_xpath(click_object).click()
 
 

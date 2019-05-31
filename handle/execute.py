@@ -5,6 +5,7 @@ import cal_data_fit
 import copy
 import recordFun
 import generate_data_ga  #数据生成器-----序列上的变量产生数据
+import os
 import sensitive_path_info
 mm = sensitive_path_info.build_m()
 # uncp = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
@@ -74,6 +75,7 @@ def gdata(seq,SM):
     M = []
     i = 1
     at = async_task.AsyncTask()
+    os.system("mysql -uroot -pzip123 < D:\\WandS\\Graduation_Project\\graphTraversal-submit\\support\\SchoolMate.sql")
     for t_index, path in enumerate(seq):
         # print " 第",i," 个测试用例", path, len(path)
         # 对每一条path 求数据，运行，评估个体数据

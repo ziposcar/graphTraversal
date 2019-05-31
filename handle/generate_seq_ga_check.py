@@ -319,6 +319,8 @@ def crossover(selectedchrolist,pc,SM):
     print " 开始交叉操作"
     for i in range(0,len(selectedchrolist),2):    #每两个个体作为一对父母
         momchro=selectedchrolist[i]
+        if i + 1 == len(selectedchrolist):
+            return crossedchrolist
         dadchro=selectedchrolist[i+1]
         randnum=random.uniform(0,1)       #随机数决定是否执行交叉
         if randnum <= pc:
