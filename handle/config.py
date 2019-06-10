@@ -76,7 +76,7 @@ def getPopParameter():
     # popsize = 26  # phpcss sensitive path has 18
     # multi_process_count 并发数，控制系统占用
     # multi_process_count = 22 #schoolmate_teacher  sensitive path has 19
-    multi_process_count = 1 # schoolmate_admin   sensitive path has 24
+    multi_process_count = 6 # schoolmate_admin   sensitive path has 24
     # multi_process_count = 6 #webchess   sensitive path has 12
     # multi_process_count = 6  #faqforge   sensitive path has 3
     # multi_process_count = 5 # addressbook sensitive path has 5

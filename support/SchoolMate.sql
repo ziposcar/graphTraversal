@@ -2,9 +2,9 @@
 # MySQL Databases For SchoolMate #
 ##################################
 set @@sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
-DROP DATABASE IF EXISTS schoolmate;
+-- DROP DATABASE IF EXISTS schoolmate;
 
-CREATE DATABASE schoolmate;
+-- CREATE DATABASE schoolmate;
 
 USE schoolmate;
 
@@ -65,9 +65,9 @@ CREATE TABLE courses (
   cperc double(6,3) NOT NULL default '0.000',
   dperc double(6,3) NOT NULL default '0.000',
   fperc double(6,3) NOT NULL default '0.000',
-  dotw varchar(11) default NULL,
-  substituteid int(11) default NULL,
-  secondcourseid int(11) default NULL,
+  dotw varchar(15) default NULL,
+  substituteid varchar(15) default NULL,
+  secondcourseid varchar(15) default NULL,
   PRIMARY KEY  (courseid)
 );
 
@@ -299,8 +299,8 @@ CREATE TABLE students (
   fname varchar(15) NOT NULL default '',
   mi char(15) NOT NULL default '',
   lname varchar(15) NOT NULL default '',
-  PRIMARY KEY  (studentid),
-  UNIQUE KEY UserID (userid)
+  PRIMARY KEY  (studentid)
+  -- UNIQUE KEY UserID (userid)
 );
 
 INSERT INTO students VALUES(1,11,'fff','m','sss');
@@ -325,8 +325,8 @@ CREATE TABLE teachers (
   userid int(11) NOT NULL default '0',
   fname varchar(15) NOT NULL default '',
   lname varchar(15) NOT NULL default '',
-  PRIMARY KEY  (teacherid),
-  UNIQUE KEY UserID (userid)
+  PRIMARY KEY  (teacherid)
+  -- UNIQUE KEY UserID (userid)
 );
 
 INSERT INTO teachers VALUES(1,21,'ffft','lllt');

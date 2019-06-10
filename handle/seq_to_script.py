@@ -13,7 +13,7 @@ import time
 
 options = webdriver.FirefoxOptions()
 profile = webdriver.FirefoxProfile()
-# options.set_headless()
+options.set_headless()
 # options.add_argument('-headless')
 # options.add_argument('--disable-gpu')
 profile.set_preference("intl.accept_languages", "en-US");
@@ -33,7 +33,7 @@ drivers = Drivers()
 multi_process_count = config.getPopParameter()[4]
 for i in range(multi_process_count):
     driver = webdriver.Firefox(firefox_binary=binary, firefox_options=options, firefox_profile=profile)
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(20)
     drivers.append(driver)
 
 # 脚本库自动产生

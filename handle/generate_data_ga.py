@@ -35,7 +35,7 @@ def obtain_var_from_path(SM, currPathT):
             pathVarType2.append('num')
         else:
             pathVarType2.append('string')
-        print num, pathVarType2[-1]
+        # print num, pathVarType2[-1]
     return varname, pathVarType2
 
 def GenerateRandomString():
